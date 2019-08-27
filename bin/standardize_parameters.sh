@@ -73,7 +73,7 @@ for i in 7 8 9 10 11 12; do
 done
 
 
-# create the set of parameters for mindepth_statistical + mindepth_majrule
+# create the set of parameters for mindepth_statistical and min_samples_locus
 for i in 7 8 9 10 11 12; do
   for k in 30 44 60; do
     ipyrad -p params-mindepth_${i}.txt -b mindepth_${i}_${k}
