@@ -1,0 +1,15 @@
+
+ -------------------------------------------------------------
+  ipyrad [v.0.7.30]
+  Interactive assembly and analysis of RAD-seq data
+ -------------------------------------------------------------
+  Begin run: 2019-08-27 11:17
+  Using args {'force': False, 'threads': 2, 'results': False, 'quiet': False, 'merge': None, 'ipcluster': None, 'cores': 0, 'params': 'params-default.txt', 'branch': None, 'steps': '1', 'debug': False, 'new': None, 'download': None, 'MPI': False}
+  Platform info: ('Linux', 'keri', '3.10.0-862.14.4.el7.x86_64', '#1 SMP Wed Sep 26 15:12:11 UTC 2018', 'x86_64')
+ -------------------------------------------------------------
+  ipyrad [v.0.7.30]
+  Interactive assembly and analysis of RAD-seq data
+ -------------------------------------------------------------
+  Begin run: 2019-08-27 11:18
+  Using args {'force': False, 'threads': 2, 'results': False, 'quiet': False, 'merge': None, 'ipcluster': None, 'cores': 0, 'params': 'params-default.txt', 'branch': None, 'steps': '234567', 'debug': False, 'new': None, 'download': None, 'MPI': False}
+  Platform info: ('Linux', 'keri', '3.10.0-862.14.4.el7.x86_64', '#1 SMP Wed Sep 26 15:12:11 UTC 2018', 'x86_64')

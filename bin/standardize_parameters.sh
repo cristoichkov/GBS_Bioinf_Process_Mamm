@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 #Create an ipyrad params defaults file
 ipyrad -n default

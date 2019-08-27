@@ -1,8 +1,9 @@
-#!bin/bash
+#!/bin/bash
 
 #SBATCH -p keri
 #SBATCH -n 6
 #SBATCH --mem=48000
+
 
 #Create an ipyrad params defaults file
 ipyrad -n default
