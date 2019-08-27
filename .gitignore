@@ -1,3 +1,6 @@
 #### ignore all de fasta.gz #####
 
 data/demultiplex/*
+data/ipyrad_out/*
+bin/*.out
+bin/*.txt
