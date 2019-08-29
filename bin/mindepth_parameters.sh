@@ -4,6 +4,8 @@
 #SBATCH -n 6
 #SBATCH --mem=48000
 
+export LD_LIBRARY_PATH=/opt/miniconda2/lib
+export HDF5_USE_FILE_LOCKING=FALSE
 
 #Create an ipyrad params defaults file
 ipyrad -n default
