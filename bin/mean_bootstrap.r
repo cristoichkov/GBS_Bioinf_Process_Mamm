@@ -4,7 +4,10 @@ library(dplyr)
 library(tidyr)
 
 ## Working direcory
-setwd("~/GBS_ipyrad_mamm/bin")
+setwd("~/GBS_Bioinf_Process_Mamm/bin")
+
+# start with a fresh brain
+rm(list = ls())
 
 ## Get raxml trees 
 trees_list <- list.files(paste0("../data/raxml/clust_82_40_raxml/"))
