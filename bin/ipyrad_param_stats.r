@@ -10,7 +10,7 @@ setwd("~/GBS_Bioinf_Process_Mamm/bin")
 rm(list = ls())
 
 ## Get  parameters file
-parameters <- read.table("../data/ipyrad_outfiles/param_clust.txt")
+parameters <- read.table("../out/ipyrad_outfiles/param_clust.txt")
 colnames(parameters) <- c("parameter", "loci", "snp")
 
 ## Reorder the data frame, separate the column parameters by "_" 
@@ -50,7 +50,7 @@ for (row in 1:nrow(loci)){
   new_loci <- rbind(new_loci, loci_rest)
 }
 
-## Reorder the data frame to can do the graph of new loci
+## Reorder the data   frame to can do the graph of new loci
 colnames(new_loci) <- "new_loci"
 param_int <- as.data.frame(c("0.82/0.85", "0.85/0.86", "0.86/0.87", "0.87/0.88", "0.88/0.89", "0.89/0.91", "0.91/0.94"))
 colnames(param_int) <- "int"
