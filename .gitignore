@@ -4,3 +4,6 @@ data/demultiplex/*
 data/ipyrad_out/*
 bin/*.out
 bin/*.txt
+.gitignore
+bin/.RData
+bin/.Rhistory
