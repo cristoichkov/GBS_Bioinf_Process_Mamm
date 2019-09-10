@@ -257,3 +257,17 @@
   Begin run: 2019-08-29 00:16
   Using args {'force': True, 'threads': 2, 'results': False, 'quiet': False, 'merge': None, 'ipcluster': None, 'cores': 0, 'params': 'params-mindepth_1.txt', 'branch': None, 'steps': '4567', 'debug': False, 'new': None, 'download': None, 'MPI': False}
   Platform info: ('Linux', 'keri', '3.10.0-862.14.4.el7.x86_64', '#1 SMP Wed Sep 26 15:12:11 UTC 2018', 'x86_64')
+ -------------------------------------------------------------
+  ipyrad [v.0.7.30]
+  Interactive assembly and analysis of RAD-seq data
+ -------------------------------------------------------------
+  Begin run: 2019-09-10 08:49
+  Using args {'force': False, 'threads': 2, 'results': False, 'quiet': False, 'merge': None, 'ipcluster': None, 'cores': 0, 'params': 'params-default.txt', 'branch': ['mindepth_2_2_80'], 'steps': '', 'debug': False, 'new': None, 'download': None, 'MPI': False}
+  Platform info: ('Linux', 'keri', '3.10.0-862.14.4.el7.x86_64', '#1 SMP Wed Sep 26 15:12:11 UTC 2018', 'x86_64')
+ -------------------------------------------------------------
+  ipyrad [v.0.7.30]
+  Interactive assembly and analysis of RAD-seq data
+ -------------------------------------------------------------
+  Begin run: 2019-09-10 08:49
+  Using args {'force': True, 'threads': 2, 'results': False, 'quiet': False, 'merge': None, 'ipcluster': None, 'cores': 0, 'params': 'params-mindepth_2_2_80.txt', 'branch': None, 'steps': '4567', 'debug': False, 'new': None, 'download': None, 'MPI': False}
+  Platform info: ('Linux', 'keri', '3.10.0-862.14.4.el7.x86_64', '#1 SMP Wed Sep 26 15:12:11 UTC 2018', 'x86_64')
