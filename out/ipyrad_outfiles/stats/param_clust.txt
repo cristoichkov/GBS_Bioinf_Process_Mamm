@@ -41,6 +41,9 @@ mindepth_6_4_80 319 5781
 mindepth_6_5_40 3210 58124
 mindepth_6_5_60 1029 18635
 mindepth_6_5_80 337 5608
+mindepth_6_6_40 2763 47237
+mindepth_6_6_60 966 16452
+mindepth_6_6_80 361 5656
 mindepth_7_7_40 2489 41954
 mindepth_7_7_60 936 15443
 mindepth_7_7_80 375 5617

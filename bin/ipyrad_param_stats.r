@@ -75,7 +75,7 @@ mindepth <- parameters %>%
   separate(parameter, c("param", "mindepth", "major_r", "min_sam"), "_") %>%
   filter(param == "mindepth") %>%
   mutate(mindepth = factor(mindepth, levels = c(6, 7, 8, 9, 10, 11, 12))) %>%
-  mutate(major_r = factor(major_r, levels = c(3, 4, 5, 7, 8, 9, 10, 11, 12))) %>%
+  mutate(major_r = factor(major_r, levels = c(3, 4, 5, 6, 7, 8, 9, 10, 11, 12))) %>%
   mutate(min_sam = factor(min_sam, levels = c(40, 60, 80)))
 
 # Generate the plot of SNPs obteined of mindepth's parameters 
