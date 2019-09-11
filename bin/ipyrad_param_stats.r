@@ -10,8 +10,11 @@ setwd("~/GBS_Bioinf_Process_Mamm/bin")
 rm(list = ls())
 
 ## Get  parameters file
-parameters <- read.table("../out/ipyrad_outfiles/param_clust.txt")
+parameters <- read.table("../out/ipyrad_outfiles/stats/param_clust.txt")
 colnames(parameters) <- c("parameter", "loci", "snp")
+
+
+#### clustering threshold ####
 
 ## Reorder the data frame, separate the column parameters by "_" 
 ## Filter by  clustering threshold
@@ -61,3 +64,30 @@ new_loci <- cbind(param_int, new_loci)
 ggplot(new_loci, aes(x=int, y=new_loci, group = 1)) +
   geom_point(size = 2, color = "coral3") + geom_line(size = 1, color = "cyan4", linetype = "dashed") + 
   labs(y = "Number of new Loci", x = "Iteration of clust threshold") 
+
+
+#### mindepth ####
+
+## Reorder the data frame, separate the column parameters by "_" 
+## Filter by  mindepth_
+## Change the numeric columns to factors
+mindepth <- parameters %>% 
+  separate(parameter, c("param", "mindepth", "major_r", "min_sam"), "_") %>%
+  filter(param == "mindepth") %>%
+  mutate(mindepth = factor(mindepth, levels = c(6, 7, 8, 9, 10, 11, 12))) %>%
+  mutate(major_r = factor(major_r, levels = c(3, 4, 5, 7, 8, 9, 10, 11, 12))) %>%
+  mutate(min_sam = factor(min_sam, levels = c(40, 60, 80)))
+
+# Generate the plot of SNPs obteined of mindepth's parameters 
+ggplot(mindepth, aes(x=major_r, y=snp)) +
+  geom_line(aes(group=min_sam, color=min_sam), size=1) +
+  labs(y = "Number of SNPs", x = "mindepth") +
+  scale_color_discrete(breaks=c("40", "60", "80"),
+                       labels=c("40%", "60%", "80%"))
+
+# Generate the plot of Loci obteined of mindepth's parameters 
+ggplot(mindepth, aes(x=major_r, y=loci)) +
+  geom_line(aes(group=min_sam, color=min_sam), size=1) +
+  labs(y = "Number of Loci", x = "major_r") +
+  scale_color_discrete(breaks=c("40", "60", "80"),
+                       labels=c("40%", "60%", "80%"))
