@@ -22,6 +22,8 @@ Figure 1.- Workflow to process GBS dataset
 - dplyr_0.8.0.3
 - RColorBrewer_1.1-2
 - reshape2_1.4.3
+- treeio 1.8.2
+- tidyr 0.8.3
 
 ##### PC info
 - Running under: Ubuntu 18.04.2 LTS
@@ -32,7 +34,17 @@ Figure 1.- Workflow to process GBS dataset
 
 #### Directories:
 ###### bin
-Contains scripts `ipyrad_param_stats.R` and `Reads_demultiplex_stats.R` used for the analysis.
+Contains:
+  * R function `.R`
+   * `ipyrad_extract_table.R`.- This function extracts the tables of stats.txt file of ipyrad output folder
+   * `mean_bootstrap_raxml.R`.- This function calculates the bootstrap mean of RAxML_bipartitionsBranchLabels tree  
+
+  * R script `.r`
+    *  `reads_demultiplex_stats.r`.- This script works to calculate the percentage of match reads and no match reads of the demultiplex process used stacks, ipyrad and gbsx.
+    * `ipyrad_param_stats.r`.- This script works to analyze the results of the parameters tested in the process of standardized of ipyrad.  
+
+  * bash script `.sh`
+    * `standardize_parameters.sh`.- This script works to run all the parameters selected to can standardize them. 
 
 
 ###### data
