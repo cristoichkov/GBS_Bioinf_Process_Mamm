@@ -22,8 +22,8 @@ Figure 1.- Workflow to process GBS dataset
 - dplyr_0.8.0.3
 - RColorBrewer_1.1-2
 - reshape2_1.4.3
-- treeio 1.8.2
-- tidyr 0.8.3
+- treeio_1.8.2
+- tidyr_0.8.3
 
 ##### PC info
 - Running under: Ubuntu 18.04.2 LTS
@@ -42,22 +42,20 @@ Contains:
   * R script `.r`
     *  `reads_demultiplex_stats.r`.- This script works to calculate the percentage of match reads and no match reads of the demultiplex process used stacks, ipyrad and gbsx.
     * `ipyrad_param_stats.r`.- This script works to analyze the results of the parameters tested in the process of standardized of ipyrad.  
+    * `plot_mean_bootstrap.r`.- This script import all the trees created with raxml and extract the mean bootstrap value for each one. Also,  create a boxplot to compare the bostrap mean value between different parameters.
 
   * bash script `.sh`
     * `standardize_parameters.sh`.- This script works to run all the parameters selected to can standardize them.
 
 
 ###### data
-Contains the results of demultiplex the raw data files:
- - `GBSX_reads_stats.csv`
- - `ipyrad_demultiplex_stats.csv`
- - `stacks_demultiplex_stats.txt`
 
-Parameters optimization in ipyrad:
- - `ipyrad_param_stats.csv`
+Contains the data demultiplex with GBSX:
+ * the data are available in [OSF](https://osf.io)
 
 ###### meta
--
+Contains information about the samples:
+ * `Mamm_names.csv`.- Is a table with the name of samples and their identify key.
 
 #### Notes
 
