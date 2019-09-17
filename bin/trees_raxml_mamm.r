@@ -2,7 +2,7 @@ library(ggtree)
 library(ape)
 
 
-tree_run1 <- read.raxml("../data/raxml/clust_82_40_raxml/RAxML_bipartitionsBranchLabels.clust_82_40_run1")
+tree_run1 <- read.raxml("../out/raxml/clust_88_40_raxml/RAxML_bipartitionsBranchLabels.clust_88_40_run1")
 
 
 names <- read.csv("../meta/Mamm_names.csv", header = FALSE, sep = "\t")
