@@ -4,7 +4,7 @@ library(dplyr)
 library(tidyr)
 
 ## Call the function ipyrad_extract_table
-source("mean_bootstrap.R")
+source("mean_bootstrap_raxml.R")
 
 ## List the directories 
 folders <- list.files("../out/raxml/")
