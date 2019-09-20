@@ -39,7 +39,7 @@ for (i in folders){
 ## Change the numeric columns to factors
 mean_boot <- mean_boot %>% 
   separate(param, c("param", "value", "min_sam"), "_") %>%
-  mutate(value = factor(value, levels = c(82, 85, 86, 88))) %>%
+  mutate(value = factor(value, levels = c(82, 85, 86, 88, 89))) %>%
   mutate(min_sam = factor(min_sam, levels = c(40, 60, 80)))
 
 ## Create the plot 
