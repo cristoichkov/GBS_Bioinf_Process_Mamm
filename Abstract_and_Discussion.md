@@ -1,4 +1,4 @@
-<p align="center"><font size="5">
+<p align="center"><font size="10">
 Taxonomic delimitation of Mammillaria haageana (Cactaceae)
 </p>
 
