@@ -3,6 +3,12 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 
+## Working direcory
+setwd("~/GBS_Bioinf_Process_Mamm/bin")
+
+## Start with a fresh brain
+rm(list = ls())
+
 ## Call the function ipyrad_extract_table
 source("mean_bootstrap_raxml.R")
 
@@ -34,7 +40,6 @@ for (i in folders){
   }
 }
   
-
 ## Reorder the data frame, separate the column parameters by "_" 
 ## Change the numeric columns to factors
 mean_boot <- mean_boot %>% 
@@ -46,10 +51,14 @@ mean_boot <- mean_boot %>%
 pl_boost <- mean_boot %>% 
   ggplot(aes(x=value, y=mean_boot, fill=factor(min_sam))) +
   geom_boxplot() + 
-  xlab("Clust Threshold (% de similitud)") + 
-  ylab("Media de valores bootstrap (10 ejecuciones en RAxML)") +
-  labs(fill = "% del número \n mínimo de muestras") +
-  guides(fill=FALSE)
-  
+  xlab("Clustering Threshold (% similarity)") + 
+  ylab("Mean bootstrap values (10 RAxML runs)") +
+  labs(fill = "% minimum \n number \n of samples") 
+
+pl_boost
+
+## Save plot in EPS Extension
+ggsave(pl_boost, file="../out/R_plots/Clust_Tresh_bootstrap.png", device="png", dpi = 100)
+
 
 
