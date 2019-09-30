@@ -51,9 +51,8 @@ mean_boot <- mean_boot %>%
 pl_boost <- mean_boot %>% 
   ggplot(aes(x=value, y=mean_boot, fill=factor(min_sam))) +
   geom_boxplot() + 
-  xlab("Clustering Threshold (% similarity)") + 
-  ylab("Mean bootstrap values (10 RAxML runs)") +
-  labs(fill = "% minimum \n number \n of samples") 
+  labs(y = "Mean bootstrap values (10 RAxML runs)", x = "Clustering Threshold (% similarity)") +
+  scale_fill_discrete(name = " Minimum \n number \n of samples", labels = c("40%", "60%", "80%"))
 
 pl_boost
 

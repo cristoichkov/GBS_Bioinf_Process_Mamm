@@ -26,18 +26,31 @@ clust_thresh <- parameters %>%
   mutate(min_sam = factor(min_sam, levels = c(40, 60, 80)))
 
 # Generate the plot of SNPs obteined of clust_threshold's parameters 
-ggplot(clust_thresh, aes(x=value, y=snp)) +
+clust_tresh_snp <-  ggplot(clust_thresh, aes(x=value, y=snp)) +
   geom_line(aes(group=min_sam, color=min_sam), size=1) +
-  labs(y = "Number of SNPs", x = "Cluster threshold") +
+  labs(colour = " Minimum \n number \n of samples", y = "Number of SNPs", x = "Clustering Threshold (% similarity)") +
   scale_color_discrete(breaks=c("40", "60", "80"),
                        labels=c("40%", "60%", "80%"))
 
+clust_tresh_snp
+
+## Save plot in EPS Extension
+ggsave(clust_tresh_snp, file="../out/R_plots/Clust_Tresh_snp.png", device="png", dpi = 100)
+
+
 # Generate the plot of Loci obteined of clust_threshold's parameters 
-ggplot(clust_thresh, aes(x=value, y=loci)) +
+clust_tresh_loci <- ggplot(clust_thresh, aes(x=value, y=loci)) +
   geom_line(aes(group=min_sam, color=min_sam), size=1) +
   labs(y = "Number of Loci", x = "Cluster threshold") +
+  labs(colour = " Minimum \n number \n of samples", y = "Number of Loci", x = "Clustering Threshold (% similarity)") +
   scale_color_discrete(breaks=c("40", "60", "80"),
                        labels=c("40%", "60%", "80%"))
+
+clust_tresh_loci
+
+## Save plot in EPS Extension
+ggsave(clust_tresh_loci, file="../out/R_plots/Clust_Tresh_loci.png", device="png", dpi = 100)
+
 
 ## Filter the loci in 80%
 loci <- clust_thresh %>% 
@@ -61,9 +74,14 @@ new_loci <- cbind(param_int, new_loci)
 
 
 # Generate the plot of the iteraction of 80% clust_threshold values
-ggplot(new_loci, aes(x=int, y=new_loci, group = 1)) +
+new_loci_clust_tresh <- ggplot(new_loci, aes(x=int, y=new_loci, group = 1)) +
   geom_point(size = 2, color = "coral3") + geom_line(size = 1, color = "cyan4", linetype = "dashed") + 
   labs(y = "Number of new Loci", x = "Iteration of clust threshold") 
+
+new_loci_clust_tresh
+
+## Save plot in EPS Extension
+ggsave(new_loci_clust_tresh, file="../out/R_plots/Clust_Tresh_new_loci.png", device="png", dpi = 100)
 
 
 #### mindepth ####
@@ -79,15 +97,27 @@ mindepth <- parameters %>%
   mutate(min_sam = factor(min_sam, levels = c(40, 60, 80)))
 
 # Generate the plot of SNPs obteined of mindepth's parameters 
-ggplot(mindepth, aes(x=major_r, y=snp)) +
+mindepth_snp <- ggplot(mindepth, aes(x=major_r, y=snp)) +
   geom_line(aes(group=min_sam, color=min_sam), size=1) +
   labs(y = "Number of SNPs", x = "mindepth") +
+  labs(colour = " Minimum \n number \n of samples", y = "Number of SNPs", x = "Mindepth Majrule") +
   scale_color_discrete(breaks=c("40", "60", "80"),
                        labels=c("40%", "60%", "80%"))
 
+mindepth_snp
+
+## Save plot in EPS Extension
+ggsave(mindepth_snp, file="../out/R_plots/Mindepth_snp.png", device="png", dpi = 100)
+
 # Generate the plot of Loci obteined of mindepth's parameters 
-ggplot(mindepth, aes(x=major_r, y=loci)) +
+mindepth_loci <- ggplot(mindepth, aes(x=major_r, y=loci)) +
   geom_line(aes(group=min_sam, color=min_sam), size=1) +
   labs(y = "Number of Loci", x = "major_r") +
+  labs(colour = " Minimum \n number \n of samples", y = "Number of Loci", x = "Mindepth Majrule") +
   scale_color_discrete(breaks=c("40", "60", "80"),
                        labels=c("40%", "60%", "80%"))
+
+mindepth_loci
+
+## Save plot in EPS Extension
+ggsave(mindepth_loci, file="../out/R_plots/Mindepth_loci.png", device="png", dpi = 100)
