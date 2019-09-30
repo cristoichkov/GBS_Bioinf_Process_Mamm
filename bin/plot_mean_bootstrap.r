@@ -39,12 +39,17 @@ for (i in folders){
 ## Change the numeric columns to factors
 mean_boot <- mean_boot %>% 
   separate(param, c("param", "value", "min_sam"), "_") %>%
-  mutate(value = factor(value, levels = c(82, 85, 86, 88, 89, 91, 94))) %>%
+  mutate(value = factor(value, levels = c(82, 85, 86, 87, 88, 89, 91, 94))) %>%
   mutate(min_sam = factor(min_sam, levels = c(40, 60, 80)))
 
 ## Create the plot 
-mean_boot %>% 
+pl_boost <- mean_boot %>% 
   ggplot(aes(x=value, y=mean_boot, fill=factor(min_sam))) +
-  geom_boxplot() 
+  geom_boxplot() + 
+  xlab("Clust Threshold (% de similitud)") + 
+  ylab("Media de valores bootstrap (10 ejecuciones en RAxML)") +
+  labs(fill = "% del número \n mínimo de muestras") +
+  guides(fill=FALSE)
+  
 
 
