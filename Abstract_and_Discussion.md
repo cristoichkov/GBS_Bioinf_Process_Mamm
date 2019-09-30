@@ -1,6 +1,5 @@
-<p align="center"><font size="10">
-Taxonomic delimitation of Mammillaria haageana (Cactaceae)
-</p>
+### Taxonomic delimitation of Mammillaria haageana (Cactaceae)
+
 
 
 

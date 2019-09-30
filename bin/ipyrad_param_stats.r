@@ -30,7 +30,8 @@ clust_tresh_snp <-  ggplot(clust_thresh, aes(x=value, y=snp)) +
   geom_line(aes(group=min_sam, color=min_sam), size=1) +
   labs(colour = " Minimum \n number \n of samples", y = "Number of SNPs", x = "Clustering Threshold (% similarity)") +
   scale_color_discrete(breaks=c("40", "60", "80"),
-                       labels=c("40%", "60%", "80%"))
+                       labels=c("40%", "60%", "80%")) +
+  annotate("text", x = 1, y = 65000, label = "A)", size = 8, fontface = 2)
 
 clust_tresh_snp
 
@@ -44,7 +45,8 @@ clust_tresh_loci <- ggplot(clust_thresh, aes(x=value, y=loci)) +
   labs(y = "Number of Loci", x = "Cluster threshold") +
   labs(colour = " Minimum \n number \n of samples", y = "Number of Loci", x = "Clustering Threshold (% similarity)") +
   scale_color_discrete(breaks=c("40", "60", "80"),
-                       labels=c("40%", "60%", "80%"))
+                       labels=c("40%", "60%", "80%")) +
+  annotate("text", x = 1, y = 3800, label = "B)", size = 8, fontface = 2)
 
 clust_tresh_loci
 
