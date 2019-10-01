@@ -12,10 +12,10 @@ rm(list = ls())
 ## Call the function ipyrad_extract_table
 source("ipyrad_extract_table.R")
 
-## Cluster Treshhold ##
+## Cluster Treshhol ##
 
 ## List the directories 
-folders <- list.files("../out/ipyrad_outfiles/parameters/", pattern = "clust")
+folders <- intersect(list.files("../out/ipyrad_outfiles/parameters/", pattern = "clust"), list.files("../out/ipyrad_outfiles/parameters/", pattern = "80_outfiles"))
 
 ## Create a dataframe empty
 df_het_clust <- data.frame()
@@ -46,11 +46,11 @@ for (i in folders){
 clust_thresh_het <- df_het_clust %>% 
   separate(Id, c("param", "value", "min_sam"), "_") %>%
   mutate(value = factor(value, levels = c(82, 85, 86, 87, 88, 89, 91, 94))) %>%
-  mutate(min_sam = factor(min_sam, levels = c(40, 60, 80)))
+  mutate(min_sam = factor(min_sam, levels = c(80)))
 
 ## Create the plot 
 clust_thresh_het %>% 
-  ggplot(aes(x=value, y=error_est, fill=factor(min_sam))) +
+  ggplot(aes(x=value, y=hetero_est, fill=factor(min_sam))) +
   geom_boxplot() + 
   xlab("Clustering Threshold (% similarity)") + 
   ylab("Mean bootstrap values (10 RAxML runs)") +
