@@ -5,13 +5,13 @@ library(RColorBrewer)
 library(reshape2)
 
 ## Load the results of demultiplex to ipyrad, stacks and gbsx and Sum of correctly match reads
-gbsx <- read.table("../data/GBSX_reads_stats.csv", sep = ",", header=TRUE)
+gbsx <- read.table("../out/demultiplex_stats/GBSX_reads_stats.csv", sep = ",", header=TRUE)
 sum(as.numeric(gbsx$total_sequences), na.rm = TRUE)
 
-PyRad <- read.csv("../data/ipyrad_demultiplex_stats.csv", sep = "\t", header=TRUE)
+PyRad <- read.csv("../out/demultiplex_stats/ipyrad_demultiplex_stats.csv", sep = "\t", header=TRUE)
 sum(as.numeric(PyRad$total_reads), na.rm = TRUE)
 
-stacks <- read.table("../data/stacks_demultiplex_stats.txt", sep = "\t", header=FALSE)
+stacks <- read.table("../out/demultiplex_stats/stacks_demultiplex_stats.txt", sep = "\t", header=FALSE)
 sum(as.numeric(stacks$V4), na.rm = TRUE)
 
 ## Create a dataframe with the percentages of match reads and no match reads
@@ -29,7 +29,7 @@ ggplot(perf_soft, aes(x = Software, y = value, fill = forcats::fct_rev(variable)
 
 
 ## Load the results of demultiplex with gbsx
-df_reads_dem <- read.csv("../data/GBSX_reads_stats.csv")
+df_reads_dem <- read.csv("../out/demultiplex_stats/GBSX_reads_stats.csv")
 
 ## Filter M_haageana_san_angelensis but not incluid Mhsa_6_2 Mhsa_6_1 
 mhsa <- df_reads_dem %>%
@@ -60,6 +60,7 @@ ggplot(msuper, aes(x=ID, y=total_sequences, fill = Especie)) +
         axis.ticks.x=element_blank()) +
   scale_fill_manual(values = getPalette(colourCount)) 
   
+
 
 
 

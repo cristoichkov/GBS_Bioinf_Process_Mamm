@@ -8,9 +8,9 @@ library(doMC)
 
 tree_run1 <- read.raxml("../out/tree_raxml/RAxML_bipartitionsBranchLabels.clust_89_40_run1")
 
-ggtree(tree_run1) + geom_tiplab() + geom_label2(aes(label = node), size = 3) + geom_rootpoint()
+ggtree(tree_1) + geom_tiplab() + geom_label2(aes(label = node), size = 3) + geom_rootpoint()
 
-tree_run1 <- groupClade(tree_run1, .node = c(127, 122, 113, 144, 109, 95, 82))
+tree_1 <- groupClade(tree_run1, .node = c(127, 122, 113, 144, 109, 95, 82))
 
 
 tree_mamm <- ggtree(tree_run1, aes(color=group)) + geom_tiplab() 
