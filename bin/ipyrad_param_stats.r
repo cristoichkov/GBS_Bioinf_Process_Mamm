@@ -123,3 +123,46 @@ mindepth_loci
 
 ## Save plot in EPS Extension
 ggsave(mindepth_loci, file="../out/R_plots/Mindepth_loci.png", device="png", dpi = 100)
+
+
+### Optimal Parameters ###
+
+## Get  parameters file
+parameters_opt <- read.table("../out/ipyrad_outfiles/stats/param_clust_opt.txt")
+colnames(parameters_opt) <- c("parameter", "loci", "snp")
+
+
+## Reorder the data frame, separate the column parameters by "_" 
+## Filter by  clustering threshold
+## Change the numeric columns to factors
+par_opt <- parameters_opt %>% 
+  separate(parameter, c("param", "clust", "mindepth", "min_sam"), "_") %>%
+  mutate(clust = factor(clust, levels = c(87, 88, 89))) %>%
+  mutate(mindepth = factor(mindepth, levels = c(7, 8, 9))) %>%
+  mutate(min_sam = factor(min_sam, levels = c(30, 44, 60))) %>%
+  mutate(min_sam = recode(min_sam, "30" = "40", "44" = "60", "60" = "80")) %>%
+  mutate(opt = paste(clust, mindepth, sep = '_')) %>%
+  select(param, opt, min_sam, loci, snp)
+
+
+# Generate the plot of SNPs obteined of clust_threshold's parameters 
+param_opt_snp <-  ggplot(par_opt, aes(x=opt, y=snp)) +
+  geom_line(aes(group=min_sam, color=min_sam), size=1) +
+  labs(colour = " Minimum \n number \n of samples", y = "Number of SNPs", x = "Clustering Threshold (% similarity)") +
+  scale_color_discrete(breaks=c("40", "60", "80"),
+                       labels=c("40%", "60%", "80%")) +
+  annotate("text", x = 1, y = 50000, label = "A)", size = 8, fontface = 2)
+
+param_opt_snp
+
+# Generate the plot of Loci obteined of clust_threshold's parameters 
+param_opt_loci <- ggplot(par_opt, aes(x=opt, y=loci)) +
+  geom_line(aes(group=min_sam, color=min_sam), size=1) +
+  labs(y = "Number of Loci", x = "Cluster threshold") +
+  labs(colour = " Minimum \n number \n of samples", y = "Number of Loci", x = "Clustering Threshold (% similarity)") +
+  scale_color_discrete(breaks=c("40", "60", "80"),
+                       labels=c("40%", "60%", "80%")) +
+  annotate("text", x = 1, y = 3000, label = "B)", size = 8, fontface = 2)
+
+param_opt_loci
+
