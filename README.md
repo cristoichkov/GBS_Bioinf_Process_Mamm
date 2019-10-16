@@ -36,26 +36,33 @@ Figure 1.- Workflow to process GBS dataset
 ###### bin
 Contains:
   * R function `.R`
-    * `ipyrad_extract_table.R`.- This function extracts the tables of stats.txt file of ipyrad output folder
-    * `mean_bootstrap_raxml.R`.- This function calculates the bootstrap mean of RAxML_bipartitionsBranchLabels tree  
+    * `ipyrad_extract_table.R`.- extracts the tables of stats.txt file of ipyrad output folder.
+    * `mean_bootstrap_raxml.R`.- calculates the bootstrap mean of RAxML_bipartitionsBranchLabels tree.
+    * `ipyrad_read_loci.R`.- parse the .loci file into fasta file, and creates a table with the sequence length.
 
   * R script `.r`
-    *  `reads_demultiplex_stats.r`.- This script works to calculate the percentage of match reads and no match reads of the demultiplex process used stacks, ipyrad and gbsx.
-    * `ipyrad_param_stats.r`.- This script works to analyze the results of the parameters tested in the process of standardized of ipyrad.  
-    * `plot_mean_bootstrap.r`.- This script import all the trees created with raxml and extract the mean bootstrap value for each one. Also,  create a boxplot to compare the bostrap mean value between different parameters.
+    *  `reads_demultiplex_stats.r`.-  works to calculate the percentage of match reads and no match reads of the demultiplex process used stacks, ipyrad and gbsx.
+    * `ipyrad_param_stats.r`.- works to analyze the results of the parameters tested in the process of standardized of ipyrad and creates the plots.  
+    * `plot_mean_bootstrap.r`.- import all the trees created with raxml and extract the mean bootstrap value for each one. Also,  create a boxplot to compare the bostrap mean value between different parameters.
+    * `hetero_s5_consens.r`.- works to analyze the results of the hetero_s5_consens file in the process of standardized of ipyrad and creates the boxplot.
+    * `trees_raxml_mamm.r`.- import the trees obtained in raxml and mrbayes to modify them.
+
 
   * bash script `.sh`
-    * `standardize_parameters.sh`.- This script works to run all the parameters selected to can standardize them.
+    * `standardize_parameters.sh`.- works to run all the parameters selected to can standardize them.
+    * `raxml_clust_tresh.sh`.- runs 10 times with different parsimony and bootstrap seeds for each clustering threshold parameter.
 
+*note.- the folder `unused` contains the scripts that I use to practice and probe the final scripts*
 
 ###### data
 
 Contains the data demultiplex with GBSX:
- * the data are available in [OSF](https://osf.io)
+ * the data are available in [OSF](https://osf.io).
 
 ###### meta
 Contains information about the samples:
- * `Mamm_names.csv`.- Is a table with the name of samples and their identify key.
+ * `Mamm_names.csv`.- is a table with the samples names and their identify key.
+ * `Mamm_clades_chlor.csv`.- contains in the first column samples id, and the second column is to identify its position in the phylogeny with two chloroplast markers.
 
 #### Notes
 
