@@ -64,12 +64,12 @@ ipyrad_loci_to_fasta <- function(file, n_samples){
   locus_df_all <- locus_df_all %>% slice(1:n_samples) ## select only the number of samples 
   
   ## loop to replace <NA> values to "-" character
-  for (g in 1:nrow(locus_df_all)){
-    for (f in 2:length(locus_df_all)) {
+  for (f in 1:nrow(locus_df_all)){
       
         locus_df_all[,f] <- fct_explicit_na(locus_df_all[,f], na_level =  strrep("-", locus_lenght[f-1,2]))
+        
   }
-}
+
   
   pre_fast <- locus_df_all %>% unite("loci", matches("^locus"), sep = "") ## unite all locus y one locus 
   
@@ -78,5 +78,32 @@ ipyrad_loci_to_fasta <- function(file, n_samples){
   locus_lenght$cumsum <- cumsum(locus_lenght$Lenght) ## convert the dataframe to fasta file 
   
   write.csv(locus_lenght, file = "length_locus.csv", row.names = FALSE) ## save the length dataframe in .csv file
+  
+  
+  ## Create the file with partition per locus
+  
+  one <- paste0(locus_lenght[1,1], "=", 1, "-", locus_lenght[1,3], ";")
+  
+  vec_pf <- as.vector(one)
+  
+  for (p in 1:nrow(locus_lenght)){
+    
+    pf1 <- locus_lenght[p, 3]
+    
+    pf2 <- locus_lenght[p+1,3]
+    
+    name <- locus_lenght[p+1,1]
+    
+    two <- paste0(locus_lenght[p+1,1], "=", locus_lenght[p,3]+1, "-", locus_lenght[p+1,3], ";")
+    
+    vec_pf <- c(vec_pf, two)
+  }
+  
+  vec_pf <- vec_pf[1:p]
+  
+  vec_pf <- as.data.frame(vec_pf)
+  
+  write.table(vec_pf, file = "partitio_finder.txt", col.names=FALSE, row.names=FALSE, quote = FALSE)
+  
 }
   
