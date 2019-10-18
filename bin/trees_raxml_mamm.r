@@ -1,84 +1,95 @@
-      library(ggtree)
-      library(ape)
-      library(treeio)
+library(ggtree)
+library(ape)
+library(treeio)
 library(colorspace)
 library(MoreTreeTools)
 library(doMC)
+library(dplyr)
+library(ggExtra)
+      
+## function to extract a list of nodes and its tip labels from a tree
+source("extract_nodes_tips.R")
 
+## vector with your nodes 
+nodes <- c(126, 115, 112, 141, 138, 108, 83, 99, 97, 81, 77, 146)
 
-tree_run1 <- read.raxml("../out/tree_raxml/RAxML_bipartitionsBranchLabels.clust_89_40_run1")
+## extract a list of nodes and its tip labels from a tree
+nodes_tree <- extract_nodes_tips("../out/tree_raxml/RAxML_bipartitionsBranchLabels.opt_89_9_40_run1", all_nodes = FALSE, nodes = nodes)
 
-ggtree(tree_1) + geom_tiplab() + geom_label2(aes(label = node), size = 3) + geom_rootpoint()
+## convert nodes to dataframe
+nodes_tree$node <- factor(nodes_tree$node)
 
-tree_1 <- groupClade(tree_run1, .node = c(127, 122, 113, 144, 109, 95, 82))
+## Read the file with the mammillarias name 
+names <- read.csv("../meta/Mamm_names.csv", header = FALSE, sep = "\t")
 
-
-tree_mamm <- ggtree(tree_run1, aes(color=group)) + geom_tiplab() 
-
-ggsave(tree_mamm, file="../out/R_plots/tree_mamm.png", device="png", dpi = 100)
-
-
-  names <- read.csv("../meta/Mamm_names.csv", header = FALSE, sep = "\t")
-
-
-tree_run1 <-  rename_taxa(tree_run1, names, V1, V2)
-
-tree_run1@phylo$tip.label
+## loop to change the names of tips in the file nodes tree
+for (i in 1:nrow(names)){
   
-ggtree(tree_run1) + geom_tiplab() + geom_label2(aes(label = bootstrap)) + geom_rootpoint() +
-  geom_cladelabel(node=127, label="C1", color="red2", align=TRUE, barsize = 2) +
-  geom_cladelabel(node=122, label="C2", color="blue", align=TRUE, barsize = 2) +
-  geom_cladelabel(node=116, label="C3", color="green", align=TRUE, barsize = 2)
+  x <- names[i,1]
   
+  y <- names[i,2]
+  
+  for (n in 1:nrow(nodes_tree)){
+    
+    if (nodes_tree[n,1] == x){
+      
+      nodes_tree[n,1] <- y
+    }
+  }
+}
 
-ggtree(tree_run1) + geom_tiplab() + geom_label2(aes(label = bootstrap), size = 3) + geom_rootpoint()
+## loop to split the samples according of their nodes and put them in a list
+cls_lst <- list()
 
-
-ggtree(tree_run1) + geom_tiplab() + geom_label2(aes(label = bootstrap))
-n <- detectCores()
-# set-up
-registerDoMC(cores=n)
-# example tree
-tree <- rtree(1000)
-
-nodes
-
-ggtree(tree) + geom_tiplab() + geom_label2(aes(label = node)) + geom_rootpoint()
-
-# find all internal nodes in tree
-nds <- (getSize(tree) + 1):(tree$Nnode + getSize(tree))
-# generate inital 'loop dataframe' for plyr
-l_data <- data.frame(node=nds, stringsAsFactors=FALSE)
-res <- plyr::mlply(.data=l_data, .fun=getChildren, tree=tree, .parallel=TRUE)
-res <- res[1:length(res)]  # remove the 'attr's
-# add children for each tip, which is just the tip, for consistency
-res[tree$tip.label] <- tree$tip.label
-
+for (w in 1:length(levels(nodes_tree[,2]))){
+  
+  Cw <- nodes_tree %>% filter(node == levels(nodes_tree[,2])[w])
+  
+  Cw <- as.vector(Cw[,1])
+  
+  cls_lst[[w]] <- Cw
+}
 
 
 
-
-
-tree_run1 <- read.raxml("../out/tree_raxml/RAxML_bipartitionsBranchLabels.clust_89_40_run1")
+tree_1 <- read.raxml("../out/tree_raxml/RAxML_bipartitionsBranchLabels.opt_89_9_40_run1")
 
 names <- read.csv("../meta/Mamm_names.csv", header = FALSE, sep = "\t")
 
-tree_run1 <-  rename_taxa(tree_run1, names, V1, V2)
+tree_1 <-  rename_taxa(tree_1, names, V1, V2)
 
-names_clades <- read.csv("../meta/Mamm_clades_chlor.csv")
+ggtree(tree_1) + geom_tiplab() + geom_label2(aes(label = node), size = 3) + geom_rootpoint()
 
-p <- ggtree(tree_run1) + geom_tiplab() + geom_label2(aes(label = bootstrap), size = 3) + geom_rootpoint()
+ggtree(tree_1) + geom_tiplab() + geom_label2(aes(label = bootstrap), size = 3) + geom_rootpoint()
+
+tree_1 <- groupOTU(tree_1, cls_lst)
+
+p1 <- ggtree(tree_1) + geom_tiplab(aes(color=group)) +  geom_text(aes(label=bootstrap/100), col = "black", size = 3, 
+                                                            nudge_x = -0.00015,  nudge_y = 0.7)
 
 
-p$labels$label
 
-p %<+% names_clades + 
-  geom_tiplab(aes(fill = factor(clade_chorl)),
-              color = "black", # color for label font
-              geom = "label",  # labels not text
-              label.padding = unit(0.15, "lines"), # amount of padding around the labels
-              label.size = 0) 
+tree_2 <- read.raxml("../out/tree_raxml/RAxML_bipartitionsBranchLabels.opt_89_9_60_run1")
 
-p
+tree_2 <-  rename_taxa(tree_2, names, V1, V2)
 
-ggsave(pl_boost, file="../out/R_plots/Clust_Tresh_bootstrap.png", device="png", dpi = 100)
+tree_2 <- groupOTU(tree_2, cls_lst)
+
+p2 <- ggtree(tree_2) + geom_tiplab(aes(color=group)) +  geom_text(aes(label=bootstrap/100), col = "black", size = 3, 
+                                                            nudge_x = -0.0001,  nudge_y = 0.7)
+
+
+
+tree_3 <- read.raxml("../out/tree_raxml/RAxML_bipartitionsBranchLabels.opt_89_9_80_run1")
+
+tree_3 <-  rename_taxa(tree_3, names, V1, V2)
+
+tree_3 <- groupOTU(tree_3, cls_lst)
+
+p3 <- ggtree(tree_3) + geom_tiplab(aes(color=group)) +  geom_text(aes(label=bootstrap/100), col = "black", size = 3, 
+                                                            nudge_x = -0.0001,  nudge_y = 0.7)
+
+##  plot all the trees in one
+multiplot(p1, p2, p3, ncol=3, labels=c("A", "B", "C"))
+
+
