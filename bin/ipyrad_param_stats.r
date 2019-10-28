@@ -31,27 +31,29 @@ clust_tresh_snp <-  ggplot(clust_thresh, aes(x=value, y=snp)) +
   labs(colour = " Minimum \n number \n of samples", y = "Number of SNPs", x = "Clustering Threshold (% similarity)") +
   scale_color_discrete(breaks=c("40", "60", "80"),
                        labels=c("40%", "60%", "80%")) +
-  annotate("text", x = 1, y = 65000, label = "A)", size = 8, fontface = 2)
+  theme(legend.position = c(0.9, 0.5)) +
+  geom_vline(xintercept = 4, linetype="dashed", size = 0.6, color = "blueviolet") +
+  geom_vline(xintercept = 6, linetype="dashed", size = 0.6, color = "blueviolet") +
+  annotate("text", x = 1, y = 65000, label = "A)", size = 6, fontface = 2)
+
 
 clust_tresh_snp
-
-## Save plot in EPS Extension
-ggsave(clust_tresh_snp, file="../out/R_plots/Clust_Tresh_snp.png", device="png", dpi = 100)
-
 
 # Generate the plot of Loci obteined of clust_threshold's parameters 
 clust_tresh_loci <- ggplot(clust_thresh, aes(x=value, y=loci)) +
   geom_line(aes(group=min_sam, color=min_sam), size=1) +
-  labs(y = "Number of Loci", x = "Cluster threshold") +
   labs(colour = " Minimum \n number \n of samples", y = "Number of Loci", x = "Clustering Threshold (% similarity)") +
   scale_color_discrete(breaks=c("40", "60", "80"),
                        labels=c("40%", "60%", "80%")) +
-  annotate("text", x = 1, y = 3800, label = "B)", size = 8, fontface = 2)
+  theme(legend.position = c(0.9, 0.5)) +
+  geom_vline(xintercept = 4, linetype="dashed", size = 0.6, color = "blueviolet") +
+  geom_vline(xintercept = 6, linetype="dashed", size = 0.6, color = "blueviolet") +
+  annotate("text", x = 1, y = 3850, label = "B)", size = 6, fontface = 2)
 
 clust_tresh_loci
 
-## Save plot in EPS Extension
-ggsave(clust_tresh_loci, file="../out/R_plots/Clust_Tresh_loci.png", device="png", dpi = 100)
+##  plot all the trees in one
+multiplot(clust_tresh_snp, clust_tresh_loci,  ncol=2, labels=c("A", "B"))
 
 
 ## Filter the loci in 80%
@@ -104,12 +106,13 @@ mindepth_snp <- ggplot(mindepth, aes(x=major_r, y=snp)) +
   labs(y = "Number of SNPs", x = "mindepth") +
   labs(colour = " Minimum \n number \n of samples", y = "Number of SNPs", x = "Mindepth Majrule") +
   scale_color_discrete(breaks=c("40", "60", "80"),
-                       labels=c("40%", "60%", "80%"))
+                       labels=c("40%", "60%", "80%")) +
+  theme(legend.position = c(0.9, 0.5)) +
+  geom_vline(xintercept = 5, linetype="dashed", size = 0.6, color = "blueviolet") +
+  geom_vline(xintercept = 7, linetype="dashed", size = 0.6, color = "blueviolet") +
+  annotate("text", x = 10, y = 100000, label = "A)", size = 6, fontface = 2)
 
 mindepth_snp
-
-## Save plot in EPS Extension
-ggsave(mindepth_snp, file="../out/R_plots/Mindepth_snp.png", device="png", dpi = 100)
 
 # Generate the plot of Loci obteined of mindepth's parameters 
 mindepth_loci <- ggplot(mindepth, aes(x=major_r, y=loci)) +
@@ -117,13 +120,16 @@ mindepth_loci <- ggplot(mindepth, aes(x=major_r, y=loci)) +
   labs(y = "Number of Loci", x = "major_r") +
   labs(colour = " Minimum \n number \n of samples", y = "Number of Loci", x = "Mindepth Majrule") +
   scale_color_discrete(breaks=c("40", "60", "80"),
-                       labels=c("40%", "60%", "80%"))
+                       labels=c("40%", "60%", "80%")) +
+  theme(legend.position = c(0.9, 0.5)) +
+  geom_vline(xintercept = 5, linetype="dashed", size = 0.6, color = "blueviolet") +
+  geom_vline(xintercept = 7, linetype="dashed", size = 0.6, color = "blueviolet") +
+  annotate("text", x = 10, y = 4800, label = "B)", size = 6, fontface = 2)
 
 mindepth_loci
 
-## Save plot in EPS Extension
-ggsave(mindepth_loci, file="../out/R_plots/Mindepth_loci.png", device="png", dpi = 100)
-
+##  plot all the trees in one
+multiplot(mindepth_snp, mindepth_loci,  ncol=2, labels=c("A", "B"))
 
 ### Optimal Parameters ###
 

@@ -24,9 +24,33 @@ Since we don't include replicates in our sequencing plate, the option is to foll
 Figure 2.- Workflow to process GBS dataset
 </p>
 
+
+
 <p align="center">
-<img src="out/R_plots/clust_tresh_multi.png" width="900">
+  <img src="out/R_plots/clust_tresh_multi.png" width="900">
 </p>
 <p align="center">
-Figure 2.- Workflow to process GBS dataset
+Figure 3.- Workflow to process GBS dataset
+</p>
+
+
+<p align="center">
+  <img src="out/R_plots/mindepth.png" width="900">
+</p>
+<p align="center">
+Figure 4.- Workflow to process GBS dataset
+</p>
+
+<p align="center">
+  <img src="out/R_plots/heter_clust.png" width="650">
+</p>
+<p align="center">
+Figure 4.- Workflow to process GBS dataset
+</p>
+
+<p align="center">
+  <img src="out/R_plots/Clust_Tresh_bootstrap.png" width="650">
+</p>
+<p align="center">
+Figure 4.- Workflow to process GBS dataset
 </p>
