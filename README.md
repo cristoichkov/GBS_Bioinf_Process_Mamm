@@ -39,6 +39,7 @@ Contains:
     * `ipyrad_extract_table.R`.- extracts the tables of stats.txt file of ipyrad output folder.
     * `mean_bootstrap_raxml.R`.- calculates the bootstrap mean of RAxML_bipartitionsBranchLabels tree.
     * `ipyrad_read_loci.R`.- parse the .loci file into fasta file, and creates a table with the sequence length.
+    * `extract_nodes_tips.R`.- extracts a list of nodes and its tip labels from a tree
 
   * R script `.r`
     *  `reads_demultiplex_stats.r`.-  works to calculate the percentage of match reads and no match reads of the demultiplex process used stacks, ipyrad and gbsx.
@@ -46,6 +47,7 @@ Contains:
     * `plot_mean_bootstrap.r`.- import all the trees created with raxml and extract the mean bootstrap value for each one. Also,  create a boxplot to compare the bostrap mean value between different parameters.
     * `hetero_s5_consens.r`.- works to analyze the results of the hetero_s5_consens file in the process of standardized of ipyrad and creates the boxplot.
     * `trees_raxml_mamm.r`.- import the trees obtained in raxml and mrbayes to modify them.
+    * `compares_trees.r`.- compare the topology of two different trees
 
 
   * bash script `.sh`
