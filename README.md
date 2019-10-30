@@ -73,6 +73,17 @@ Contains information about the samples:
  * `Mamm_names.csv`.- is a table with the samples names and their identify key.
  * `Mamm_clades_chlor.csv`.- contains in the first column samples id, and the second column is to identify its position in the phylogeny with two chloroplast markers.
 
+###### out
+Contains the results of all analysis:
+  * ###### demultiplex_stats
+     + contains the results of demultiplex with GBSX, ipyrad and stacks. The reads number correctly assigned according to its barcode.
+  * ###### ipyrad_outfiles
+     + contains the results of parameter optimization in ipyrad.
+  * ###### Rplots
+     + It contains all the outputs resulting from the R analysis.
+  * ###### tree_raxml
+     + contains the trees resulting of RAxML analysis.
+
 #### Notes
 
 
