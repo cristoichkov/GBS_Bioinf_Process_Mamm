@@ -16,6 +16,7 @@ Figure 1.- Workflow to process GBS dataset
 - [ipyrad 0.7.30](https://ipyrad.readthedocs.io/index.html)
 - [Stacks 2.41](http://catchenlab.life.illinois.edu/stacks/)
 - [R 3.6.1](https://www.r-project.org/)
+- [RAxML v8.2.11](https://cme.h-its.org/exelixis/web/software/raxml/)
 
 ##### R packages:
 - ggplot2_3.2.0
@@ -24,6 +25,12 @@ Figure 1.- Workflow to process GBS dataset
 - reshape2_1.4.3
 - treeio_1.8.2
 - tidyr_0.8.3
+- phylobase_0.8.6
+- ggtree_1.16.6
+- ape_5.3
+- ggExtra_0.9
+- phylotools_0.2.2
+- seqRFLP_1.0.1  
 
 ##### PC info
 - Running under: Ubuntu 18.04.2 LTS
