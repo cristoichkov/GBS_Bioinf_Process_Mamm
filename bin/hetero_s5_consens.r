@@ -50,7 +50,9 @@ pl_heter <- clust_thresh_het %>%
   ggplot(aes(x=value, y=heterozygosity)) +
   geom_boxplot() + 
   xlab("Clustering Threshold (% similarity)") + 
-  ylab("% heterozygous sites") 
+  ylab("% heterozygous sites") +
+  geom_boxplot(data=clust_thresh_het[clust_thresh_het$value=="89",],
+               aes(x=value, y=heterozygosity),fill="blueviolet")
 
 pl_heter
 
