@@ -61,7 +61,7 @@ tree_1 <-  rename_taxa(tree_1, names, V1, V2)
 
 ggtree(tree_1) + geom_tiplab() + geom_label2(aes(label = node), size = 3) + geom_rootpoint()
 
-ggtree(tree_1) + geom_tiplab() + geom_label2(aes(label = bootstrap), size = 3) + geom_rootpoint()
+ggtree(tree_1) + geom_tiplab() + geom_rootpoint()
 
 tree_1 <- groupOTU(tree_1, cls_lst)
 
