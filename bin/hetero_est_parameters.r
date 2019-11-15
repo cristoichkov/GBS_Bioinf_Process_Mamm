@@ -86,18 +86,20 @@ for (i in folders){
   df_het_mindepth <- rbind(df_het_mindepth, final)
 }
 
+
 ## Reorder the data frame, separate the column parameters by "_" 
 ## Change the numeric columns to factors
 mindepth_het <- df_het_mindepth %>% 
   separate(Id, c("param", "mindepth_stat", "mindepth_maj", "min_sam"), "_") %>%
-  mutate(mindepth_stat = factor(mindepth_stat, levels = c(6))) %>%
-  mutate(mindepth_maj = factor(mindepth_maj, levels = c(3, 4, 5))) %>%
-  mutate(min_sam = factor(min_sam, levels = c(40, 60, 80)))
+  mutate(mindepth_stat = factor(mindepth_stat, levels = c(6, 7, 8, 9, 10, 11, 12))) %>%
+  mutate(mindepth_maj = factor(mindepth_maj, levels = c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12))) %>%
+  mutate(min_sam = factor(min_sam, levels = c(40, 60, 80))) 
 
 ## Create the plot 
 mindepth_het %>% 
-  ggplot(aes(x=mindepth_maj, y=hetero_est, fill=factor(min_sam))) +
+  ggplot(aes(x=mindepth_maj, y=hetero_est)) +
   geom_boxplot() + 
   xlab("Clustering Threshold (% similarity)") + 
   ylab("Mean bootstrap values (10 RAxML runs)") +
   labs(fill = "% minimum \n number \n of samples") 
+  
