@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## Generate .bed, .bim, .fam, .raw files ##
+
 export PATH=$PATH:~/bin/
 
 for i in `ls ../out/vcftools/ | sed "s/_out//g"`;do

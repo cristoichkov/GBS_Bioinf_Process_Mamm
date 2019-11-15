@@ -60,6 +60,8 @@ Contains:
   * bash script `.sh`
     * `standardize_parameters.sh`.- works to run all the parameters selected to can standardize them.
     * `raxml_clust_tresh.sh`.- runs 10 times with different parsimony and bootstrap seeds for each clustering threshold parameter.
+    * `vcftools.sh`.- Convert vcf files to plink files (.map and .ped).
+    * `plink.sh`.- Generate .bed, .bim, .fam and .raw files
 
 *note.- the folder `unused` contains the scripts that I use to practice and probe the final scripts*
 

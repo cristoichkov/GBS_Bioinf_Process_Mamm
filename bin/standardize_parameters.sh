@@ -22,7 +22,7 @@ ipyrad -p params-default.txt -s 1
 ipyrad -p params-default.txt -s 234567
 
 # create the set of parameters for clust_threshold
-for i in 81 83 85 87 89 91 93; do
+for i in 82 85 86 87 88 89 91 94; do
     ipyrad -p params-default.txt -b clust_${i}
     # Modify the parameters of the created file
     sed -i '/\[14] /c\0.'$i'  ## [14] ' params-clust_${i}.txt
@@ -31,7 +31,7 @@ for i in 81 83 85 87 89 91 93; do
   done
 
 # create the set of parameters for clust_threshold and min_samples_locus
-for i in 81 83 85 87 89 91 93; do
+for i in 82 85 86 87 88 89 91 94; do
   for k in 30 44 60; do
     ipyrad -p params-clust_${i}.txt -b clust_${i}_${k}
     # Modify the parameters of the created file
@@ -42,7 +42,7 @@ for i in 81 83 85 87 89 91 93; do
 done
 
 # create the set of parameters for mindepth_majrule
-for i in 1 2 3 4 5 6; do
+for i in 3 4 5 6; do
     ipyrad -p params-default.txt -b mindepth_${i}
     # Modify the parameters of the created file
     sed -i '/\[12] /c\'$i'  ## [12] ' params-mindepth_${i}.txt
@@ -51,7 +51,7 @@ for i in 1 2 3 4 5 6; do
   done
 
 # create the set of parameters for mindepth_majrule and min_samples_locus
-for i in 1 2 3 4 5 6; do
+for i in 3 4 5 6; do
   for k in 30 44 60; do
     ipyrad -p params-mindepth_${i}.txt -b mindepth_${i}_${k}
     # Modify the parameters of the created file
