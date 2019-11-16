@@ -3,7 +3,7 @@
 This repository contains a proposal of a workflow to process GBS data mainly with ipyrad (Fig. 1). I tested the performance of three different programs to demultiplex gbs data ([GBSX](https://github.com/GenomicsCoreLeuven/GBSX), [Stacks](http://catchenlab.life.illinois.edu/stacks/) and [ipyrad](https://ipyrad.readthedocs.io/index.html)). The filtering process was done in ipyrad. I made different assembled under different parameter settings, to find the optimal parameters for my dataset following the 80% rules ([Paris et al., 2017](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.12775)).
 
 <p align="center">
-<img src="Workflow_ipyrad_mamm_haag-01.png">
+<img src="Workflow_ipyrad_mamm_haag.jpg">
 </p>
 <p align="center">
 Figure 1.- Workflow to process GBS dataset
