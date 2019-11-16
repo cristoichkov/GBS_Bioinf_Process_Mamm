@@ -74,8 +74,7 @@ p1
 
 c1 <- ggtree(tree_1) 
 
-nl1 <- ggtree(tree_1, branch.length='none')
-
+c1
 
 
 tree_2 <- read.raxml("../out/tree_raxml/RAxML_bipartitionsBranchLabels.opt_89_9_40")
@@ -89,7 +88,7 @@ p2 <- ggtree(tree_2) + geom_tiplab(aes(color=group)) +  geom_text(aes(label=boot
 
 c2 <- ggtree(tree_2) 
 
-nl2 <- ggtree(tree_2, branch.length='none')
+c2
 
 
 
@@ -104,7 +103,7 @@ p3 <- ggtree(tree_3) + geom_tiplab(aes(color=group)) +  geom_text(aes(label=boot
 
 c3 <- ggtree(tree_3) 
 
-nl3 <- ggtree(tree_3, branch.length='none')
+c3
 
 
 tree_4 <- read.raxml("../out/tree_raxml/RAxML_bipartitionsBranchLabels.opt_89_9_80")
@@ -118,7 +117,7 @@ p4 <- ggtree(tree_4) + geom_tiplab(aes(color=group)) +  geom_text(aes(label=boot
 
 c4 <- ggtree(tree_4) 
 
-nl4 <- ggtree(tree_4, branch.length='none')
+c4
 
 
 tree_5 <- read.raxml("../out/tree_raxml/RAxML_bipartitionsBranchLabels.opt_89_9_100")
@@ -132,54 +131,66 @@ p5 <- ggtree(tree_5) + geom_tiplab(aes(color=group)) +  geom_text(aes(label=boot
 
 c5 <- ggtree(tree_5) 
 
-nl5 <- ggtree(tree_5, branch.length='none')
+c5
 
 ##  plot all the trees in one
-multiplot(c5, c4, c3, c2, c1, ncol=5, labels=c("A", "B", "C", "D", "E"))
 
-##  plot all the trees in one
-multiplot(nl5, nl4, nl3, nl2, nl1, ncol=5, labels=c("A", "B", "C", "D", "E"))
-
-
-## Call the function ipyrad_extract_table
-source("mean_bootstrap_raxml.R")
+ggsave(multiplot(c5, c4, c3, c2, c1, ncol=5, labels=c("A", "B", "C", "D", "E")), 
+       file="../out/R_plots/Phylogenetic_resolution.png", device="png", dpi = 300, width = 12, height = 6)
 
 
-## List the directories 
-files <- list.files("../out/tree_raxml")
 
 
-## Create a dataframe empty
-mean_boot <- data.frame()
+### Compare Trees ##
 
+tree_1 <- read.raxml("../out/tree_raxml/RAxML_bipartitionsBranchLabels.opt_89_9_20")
 
-for (i in files){
-    
-    ## Since the directories end in _outfiles we have to stay alone with the folder identifier in this case clust_ [0-9]+_ [0-9]+
-    name <- stringr::str_extract(string = i, pattern = "opt_89_9_[0-9]+")
-    
-    ## Extract the desired tree, for this we use paste0 to enter the folders where are the trees and the mean as dataframe
-    tab <-  as.data.frame(mean_bootstrap(paste0("../out/tree_raxml/", i)))
-    
-    ## Change the colname of mean bootstrap
-    colnames(tab) <- "mean_boot"
-    
-    ## Create a second column with the name of the parameter
-    tab$param <- (name)
-    
-    ## combine the data frames by rows
-    mean_boot <- rbind(mean_boot, tab)
-    
+tree_1 <-  rename_taxa(tree_1, names, V1, V2)
+
+phylo <- groupClade(tree_1, .node = c(146, 144, 118, 132, 134, 137, 139, 115, 83, 84, 113, 92, 97, 103, 106))
+
+tree_1@phylo <- phylo
+
+p1 <- ggtree(tree_1, aes(color=group))
+
+d1 <- p1$data
+
+comp_tree_list <- list()
+
+for (i in c("40", "60", "80", "100")){
+  
+  tree_2 <- read.raxml(paste0("../out/tree_raxml/RAxML_bipartitionsBranchLabels.opt_89_9_", i))
+  
+  tree_2 <-  rename_taxa(tree_2, names, V1, V2)
+  
+  phylo <- groupClade(tree_2, .node = 75)
+  
+  tree_2@phylo <- phylo
+  
+  p2 <- ggtree(tree_2, aes(color=group))
+  
+  d2 <- p2$data
+  
+  ## reverse x-axis and 
+  ## set offset to make the tree in the right hand side of the first tree
+  
+  d2$x <- max(d2$x) - d2$x + max(d1$x) + 0.01
+  
+  dd <- bind_rows(d1, d2) %>% 
+    filter(!is.na(label))
+  
+  pp <- p1 +  geom_tree(data=d2, col = "black") + 
+    geom_text(aes(label=bootstrap/100), col = "black", size = 3, nudge_x = -0.0003,  nudge_y = 0.7) +
+    geom_text(data = d2, aes(label=bootstrap/100), col = "grey35", size = 3, nudge_x = 0.0004,  nudge_y = 0.7) 
+  
+  
+  tree_com <- pp +  geom_line(aes(x, y, group=label), data=dd) +
+    geom_tiplab(data = d1, hjust = -0.1, linetype = "dashed", linesize = 0.001) +
+    geom_tiplab(data = d2, hjust = 1.1, linetype = "dashed", linesize = 0.001, color = "grey35") 
+  
+  comp_tree_list[[i]] <- tree_com
 }
 
+ggsave(multiplot(plotlist = comp_tree_list,  ncol = 2, labels=c("A", "B", "C", "D"), label_size = 16), 
+       file="../out/R_plots/Compare_trees.png", device="png", dpi = 300, width = 30, height = 30)
 
-## Reorder the data frame, separate the column parameters by "_" 
-## Change the numeric columns to factors
-mean_boot <- mean_boot %>% 
-  separate(param, c("param", "clust", "mindepth", "min_sam"), "_") %>%
-  mutate(min_sam = factor(min_sam, levels = c(100, 80, 60, 40, 20))) %>%
-  mutate(min_sam = factor(min_sam, labels = c("0", "20", "40", "60", "80")))
-
-ggplot(mean_boot, aes(x=min_sam, y=mean_boot, group = clust)) + geom_point(size = 3) + geom_line() +
-  scale_y_continuous(breaks = seq(0, 100, by=15)) +
-  labs(y = "Mean bootstrap values", x = "Percentage of missing data ")
