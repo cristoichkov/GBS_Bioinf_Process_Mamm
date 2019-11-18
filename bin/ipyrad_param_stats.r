@@ -71,7 +71,7 @@ mindepth_snp <- ggplot(mindepth, aes(x=major_r, y=snp)) +
   labs(colour = " Minimum \n number \n of samples", y = "Number of SNPs", x = "Mindepth") +
   scale_color_discrete(breaks=c("40", "60", "80"), labels=c("40%", "60%", "80%")) +
   theme(legend.position = c(0.9, 0.5)) +
-  annotate("text", x = 10, y = 100000, label = "A)", size = 6, fontface = 2) +
+  annotate("text", x = 10, y = 100000, label = "C)", size = 6, fontface = 2) +
   theme(axis.text.x = element_text(face="bold", size=12, colour = "gray16"), 
         axis.text.y = element_text(face="bold", size=12, colour = "gray16")) +
   theme(axis.title.y = element_text(face="bold", size = rel(1.2), angle = 90, colour = "grey32")) +
@@ -86,7 +86,7 @@ mindepth_loci <- ggplot(mindepth, aes(x=major_r, y=loci)) +
   labs(colour = " Minimum \n number \n of samples", y = "Number of Loci", x = "Mindepth") +
   scale_color_discrete(breaks=c("40", "60", "80"), labels=c("40%", "60%", "80%")) +
   theme(legend.position = c(0.9, 0.5)) +
-  annotate("text", x = 10, y = 4800, label = "B)", size = 6, fontface = 2) +
+  annotate("text", x = 10, y = 4800, label = "D)", size = 6, fontface = 2) +
   theme(axis.text.x = element_text(face="bold", size=12, colour = "gray16"), 
         axis.text.y = element_text(face="bold", size=12, colour = "gray16")) +
   theme(axis.title.y = element_text(face="bold", size = rel(1.2), angle = 90, colour = "grey32")) +
@@ -96,3 +96,10 @@ mindepth_loci
 
 ggsave(multiplot(mindepth_snp, mindepth_loci,  ncol=2, labels=c("A", "B")), 
        file="../out/R_plots/Mindepth_num_loci_snps.png", device="png", dpi = 300, width = 12, height = 6)
+
+
+
+
+ggsave(multiplot(clust_tresh_snp, mindepth_snp, clust_tresh_loci, mindepth_loci,  ncol=2), 
+       file="../out/R_plots/Num_loci_snps.png", device="png", dpi = 300, width = 12, height = 10)
+  

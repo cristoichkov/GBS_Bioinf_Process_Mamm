@@ -59,9 +59,9 @@ stats_summary_demultiplex_filter <- df_summary_filter_demultiplex %>%
          trim_quality_bp_read2, reads_filtered_by_Ns, reads_filtered_by_minlen, reads_passed_filter,
          reads_deleted, perc_reads_passed, perc_reads_deleted)
   
-write.csv(stats_summary_demultiplex_filter, file = "../out/ipyrad_outfiles/stats/stats_summary_demultiplex_filter.csv", row.names = FALSE)
+write.csv(stats_summary_demultiplex_filter, file = "../out/demultiplex_stats/stats_summary_demultiplex_filter.csv", row.names = FALSE)
 
-df_flex <- flextable(stats_summary_demultiplex_filter)
+  df_flex <- flextable(stats_summary_demultiplex_filter)
 save_as_image(df_flex, path = "../out/R_plots/Table_stats.png")  
   
 sd(stats_summary_demultiplex_filter$perc_reads_deleted, na.rm = TRUE)
