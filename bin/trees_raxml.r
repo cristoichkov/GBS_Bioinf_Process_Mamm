@@ -191,6 +191,10 @@ for (i in c("40", "60", "80", "100")){
   comp_tree_list[[i]] <- tree_com
 }
 
-ggsave(multiplot(plotlist = comp_tree_list,  ncol = 2, labels=c("A", "B", "C", "D"), label_size = 16), 
+comp_tree_list <- comp_tree_list[c("40", "80", "60", "100")]
+
+ggsave(multiplot(plotlist = comp_tree_list,  ncol = 2, labels=c("A", "C", "B", "D"), label_size = 16), 
        file="../out/R_plots/Compare_trees.png", device="png", dpi = 300, width = 30, height = 30)
 
+
+comp_tree_list

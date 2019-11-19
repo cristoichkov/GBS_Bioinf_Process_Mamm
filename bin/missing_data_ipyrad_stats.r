@@ -56,7 +56,7 @@ miss_data_clust <- df_miss_data_clust %>%
 ## Create the plot 
 mis_clust <- miss_data_clust %>% 
   ggplot(aes(x=value, y=perc_miss, fill=factor(min_sam))) +
-  geom_boxplot() + 
+   geom_boxplot() + 
   labs(y = "Missing data fraction ", x = "Clustering Threshold (% similarity)") +
   scale_fill_discrete(name = " Minimum \n number \n of samples", labels = c("40%", "60%", "80%")) +
   theme(axis.text.x = element_text(face="bold", size=12, colour = "gray16"), 
