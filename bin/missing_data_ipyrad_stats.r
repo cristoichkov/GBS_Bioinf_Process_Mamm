@@ -44,6 +44,8 @@ for (i in folders_clust){
 
 write.csv(df_miss_data_clust, file = "../out/ipyrad_outfiles/stats/clust_missing_data.csv")
 
+df_miss_data_clust <- read_csv("../out/ipyrad_outfiles/stats/clust_missing_data.csv")
+
 miss_data_clust <- df_miss_data_clust %>% 
   separate(Id, c("param", "value", "min_sam"), "_") %>%
   mutate(value = factor(value, levels = c(82, 85, 86, 87, 88, 89, 91, 94))) %>%
@@ -52,7 +54,7 @@ miss_data_clust <- df_miss_data_clust %>%
 
 
 ## Create the plot 
-miss_data_clust %>% 
+mis_clust <- miss_data_clust %>% 
   ggplot(aes(x=value, y=perc_miss, fill=factor(min_sam))) +
   geom_boxplot() + 
   labs(y = "Missing data fraction ", x = "Clustering Threshold (% similarity)") +
@@ -63,7 +65,7 @@ miss_data_clust %>%
   theme(axis.title.x = element_text(face="bold", size = rel(1.2), angle = 00, colour = "grey32"))
 
 
-
+ggsave(mis_clust, file="../out/R_plots/clust_missing_data.png", device="png", dpi = 300, width = 10, height = 7)
 
 
 ## Mindepth ##
@@ -103,6 +105,8 @@ for (i in folders_mindept){
 }
 
 write.csv(df_miss_data, file = "../out/ipyrad_outfiles/stats/mindepth_missing_data.csv")
+
+df_miss_data <- read_csv("../out/ipyrad_outfiles/stats/mindepth_missing_data.csv")
 
 miss_data_mamm <- df_miss_data %>% 
   separate(Id, c("param", "mindept",  "mindep_rul", "min_sam"), "_") %>%
