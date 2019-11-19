@@ -285,7 +285,7 @@ dists_sep_mindepth <- dists_mindepth %>%
   mutate(mindept = factor(mindept, levels = c(6, 7, 8, 9, 10, 11, 12))) %>%
   mutate(mindep_rul = factor(mindep_rul, levels = c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12))) %>%
   mutate(min_sam = factor(min_sam, levels = c(40, 60, 80))) %>%
-  filter(Pop != "s15" & Pop != "s1" & Pop != "s10" & Pop != "s14", Pop != "s6") 
+  filter(Pop != "s15" & Pop != "s1" & Pop != "s10" & Pop != "s14" & Pop != "s6" & mindep_rul != "2")  
 
 dists_sep_mindepth$Pop <-  mapvalues(dists_sep_mindepth$Pop, from = c("s2", "s3", "s4", "s5", "s7", "s8", "s9", "s11", "s12", "s13"), 
                                   to = c("Teh", "Cui", "Meis", "Cons", "Ton", "Hua", "Noch", "Acul", "Esp", "Per"))
