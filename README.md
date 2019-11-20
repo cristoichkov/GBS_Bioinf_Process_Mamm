@@ -55,7 +55,7 @@ Contains:
     * `heterozygosity_stats.r`.- works to analyze the results of the heterozygosity in the process of standardized of ipyrad and creates the boxplot.
     * `trees_raxml.r`.- import the trees obtained in raxml to modify them.
     * `genetic_distance.r`.- it generates the distance genetic from the plink raw file and it creates the boxplot.
-    * `missing_data_ipyrad_stats.r`.- import the .loci files and extracts the number and percentage of missing data. 
+    * `missing_data_ipyrad_stats.r`.- import the .loci files and extracts the number and percentage of missing data.
 
 
   * bash script `.sh`
@@ -65,7 +65,8 @@ Contains:
     * `plink.sh`.- Generate .bed, .bim, .fam and .raw files
 
 *note.- the folder `unused` contains the scripts that I use to practice and probe the final scripts*
-    * * `ipyrad_read_loci.R`.- parse the .loci file into fasta file, and creates a table with the sequence length.
+
+    * `ipyrad_read_loci.R`.- parse the .loci file into fasta file, and creates a table with the sequence length.
     * `compares_trees.r`.- compare the topology of two different trees
 
 ###### data
