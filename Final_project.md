@@ -46,14 +46,14 @@ The results show that *GBSX* recovered the highest number of reads (97.2%), foll
 <img src="out/R_plots/Correctly_demultiplexed.png" width="600">
 </p>
 <p align="center">
-Figure 2.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+Figure 2.- Percentage of correctly assigned and unassigned readings, using three programs to demultiplex.
 </p>
 
 <p align="center">
 <img src="out/R_plots/Reads_per_sample.png" width="900">
 </p>
 <p align="center">
-Figure 3.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+Figure 3.- Numbers of reads per sample are ordered by taxon which corresponds to a different color.
 </p>
 
 ##### Total number of loci and SNPs recovered using different parameters
@@ -65,7 +65,7 @@ During the clustering of step 3, *ipyrad* will allow us to filter the paralogous
 <img src="out/R_plots/Num_loci_snps.png" width="900">
 </p>
 <p align="center">
-Figure 4.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+Figure 4.- Total SNPs and loci recovered across different (A and B) clustering thresholds and (C and D) mindept. Each color line represents the minimum number of samples that must have data at a given locus for it to be retained in the final data set.
 </p>
 
 ##### Level of heterozygosis affected by different parameters
@@ -75,7 +75,7 @@ The level of heterozygosis in the clustering threshold increases from 0.82 to 0.
 <img src="out/R_plots/Heterozygous.png" width="950">
 </p>
 <p align="center">
-Figure 5.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+Figure 5.- Heterozygous sites percentage across different (A) clustering thresholds and (B) mindept.
 </p>
 
 ##### Effect of parameters on genetic distance
@@ -86,14 +86,14 @@ The genetic distances of 10 putative populations (samples from the same location
 <img src="out/R_plots/Genetic_dist_clust.png" width="900">
 </p>
 <p align="center">
-Figure 6.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+Figure 6.- Effect of different clustering thresholds on the genetic distance between individuals of the same sampling location and nearby.
 </p>
 
 <p align="center">
 <img src="out/R_plots/Genetic_dist_mindepth.png" width="900">
 </p>
 <p align="center">
-Figure 7.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+Figure 7.- Effect of different mindepth on the genetic distance between individuals of the same sampling location and nearby.
 </p>
 
 ##### Relationship between lost data and different parameters
@@ -103,14 +103,14 @@ Reduced representation genome sequencing uses restriction enzymes to generate ra
 <img src="out/R_plots/clust_missing_data.png" width="800">
 </p>
 <p align="center">
-Figure 8.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+Figure 8.- Effect of different clustering thresholds on missing data. Each color represents the minimum number of samples that must have data at a given locus for it to be retained in the final data set.
 </p>
 
 <p align="center">
 <img src="out/R_plots/mindepth_missing_data.png" width="800">
 </p>
 <p align="center">
-Figure 9.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+Figure 9.- Effect of different mindepth on missing data. Each color represents the minimum number of samples that must have data at a given locus for it to be retained in the final data set.
 </p>
 
 ##### Impact of lost data on topology and phylogenetic resolution
@@ -120,21 +120,21 @@ There has been much discussion about the impact of missing data on topology and 
 <img src="out/R_plots/Phylogenetic_resolution.png" width="900">
 </p>
 <p align="center">
-Figure 10.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+Figure 10.- Variation among tree topologies and resolution as a function of the missing data. A) 0%, B) 20%, C) 40%, D) 60% and E) 80% of missing data.
 </p>
 
 <p align="center">
 <img src="out/R_plots/Clust_Tresh_bootstrap.png" width="700">
 </p>
 <p align="center">
-Figure 11.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+Figure 11.- *raxml* bootstrap values for analyses on the full data matrix at different clustering thresholds. Each color represents the minimum number of samples that must have data at a given locus for it to be retained in the final data set.
 </p>
 
 <p align="center">
 <img src="out/R_plots/Compare_trees.png">
 </p>
 <p align="center">
-Figure 12.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+Figure 12.- Effect of the missing data on trees topology. The comparison is between 80% of missing data vs A) 60%, B) 40%, C) 20% and D) 0%. In total, 15 putative clades were selected to be used in the comparison.  
 </p>
 
 #### DISCUSSION
@@ -188,6 +188,8 @@ Li, Q.-Q., Zhou, S.-D., Huang, D.-Q., He, X.-J., & Wei, X.-Q. (2016). Molecular 
 * Pilbeam, J. (1999). Mammillaria. Cirio Publishing Services Ltd in Southampton.
 
 * Reppenhagen, W. (1992). Die Gattung Mammillaria. Monographie.
+
+* Stamatakis, A. (2014). raxml version 8: A tool for phylogenetic analysis and post‐analysis of large phylogenies. Bioinformatics, 30( 9), 1312– 1313. https://doi.org/10.1093/bioinformatics/btu033
 
 * Tripp, E. A., Tsai, Y.-H. E., Zhuang, Y., & Dexter, K. G. (2017). RADseq dataset with 90% missing data fully resolves recent radiation of Petalidium (Acanthaceae) in the ultra-arid deserts of Namibia. Ecology and Evolution, 7(19), 7920-7936. https://doi.org/10.1002/ece3.327
 
