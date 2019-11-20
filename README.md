@@ -1,6 +1,12 @@
-# Taxonomic delimitation of *Mammillaria haageana* (Cactaceae)
+# Optimization of *de novo* assembly from GBS data
+Genotyping by sequencing (GBS) is a method that has proven useful for resolving phylogenetic relationships in species complexes, as well as to evaluate population genetic structure. *ipyrad* was created by Eaton (2014) to assemble *de novo* loci or with reference genome to optimize coverage through phylogenetic data sets and it can work with GBS data. Because the level of genetic differentiation between samples depends on many factors, including population structure, effective size, and mutation rate, it is not advisable to perform analyzes with the default parameters. Since various metrics can be evaluated to find the optimal assemblies, the aims of this repository is to evaluate two parameters in ipyrad (clustering threshold and mindepth) under the evaluation of five metrics: the number of loci and SNPs recovered, the level of heterozygosis, the genetic distance between samples of the same locality and close to it, the fraction of lost data and bootstrap supports for maximum likelihood analysis. The resulting analyses will be evaluated to select the optimal assembly. The effect of lost data on phylogenetic resolution and support of nodes is also evaluated, as well as topology under different percentages of lost data.
 
-This repository contains a proposal of a workflow to process GBS data mainly with ipyrad (Fig. 1). I tested the performance of three different programs to demultiplex gbs data ([GBSX](https://github.com/GenomicsCoreLeuven/GBSX), [Stacks](http://catchenlab.life.illinois.edu/stacks/) and [ipyrad](https://ipyrad.readthedocs.io/index.html)). The filtering process was done in ipyrad. I made different assembled under different parameter settings, to find the optimal parameters for my dataset following the 80% rules ([Paris et al., 2017](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.12775)).
+### Workflow
+**Demultiplexed**.- The first part of the analysis is demultiplexed the raw sequences, we tested three different software (*Stacks*, *ipyrad* and *GBSX*) to compare their performance. Subsequently, the results can be analyzed and plotted with the script `reads_demultiplex_stats.r`.
+
+**ipyrad**.- To optimize the parameters clustering threshold and mindepth, we use el script `standardize_parameters.sh`
+
+To **graph the results** obtained of the parameters optimization, we used the scripts marked i the figure 1 to each metric. To graph the results obtained from the parameters optimization, we used the scripts marked in figure 1 to each metric. When the *R* script finish in `.R` is a function that we will use in other script finish in `.r`. If the script finish in `.sh` we have to run in the *bash* terminal.
 
 <p align="center">
 <img src="Workflow_ipyrad_mamm_haag.jpg">
@@ -37,7 +43,6 @@ Figure 1.- Workflow to process GBS dataset
 - Motherboard: Asus TUF B450M-plus gaming
 - CPU: Ryzen 7 2700x
 - RAM: G.Skill Trident Z DDR4 4 x 8GB
-
 
 #### Directories:
 ###### bin
