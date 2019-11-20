@@ -14,7 +14,7 @@ Figure 1.- Workflow to process GBS dataset
 ##### Software:
 - [GBSX v1.3](https://github.com/GenomicsCoreLeuven/GBSX)
 - [ipyrad 0.7.30](https://ipyrad.readthedocs.io/index.html)
-- [Stacks 2.41](http://catchenlab.life.illinois.edu/stacks/)
+- [Stacks 2.3](http://catchenlab.life.illinois.edu/stacks/)
 - [R 3.6.1](https://www.r-project.org/)
 - [RAxML v8.2.11](https://cme.h-its.org/exelixis/web/software/raxml/)
 
@@ -45,16 +45,17 @@ Contains:
   * R function `.R`
     * `ipyrad_extract_table.R`.- extracts the tables of stats.txt file of ipyrad output folder.
     * `mean_bootstrap_raxml.R`.- calculates the bootstrap mean of RAxML_bipartitionsBranchLabels tree.
-    * `ipyrad_read_loci.R`.- parse the .loci file into fasta file, and creates a table with the sequence length.
     * `extract_nodes_tips.R`.- extracts a list of nodes and its tip labels from a tree
+    * `missing_data_ipyrad.R`.-  parse the .loci file and return a data frame with missing data for each loci
 
   * R script `.r`
     *  `reads_demultiplex_stats.r`.-  works to calculate the percentage of match reads and no match reads of the demultiplex process used stacks, ipyrad and gbsx.
     * `ipyrad_param_stats.r`.- works to analyze the results of the parameters tested in the process of standardized of ipyrad and creates the plots.  
     * `plot_mean_bootstrap.r`.- import all the trees created with raxml and extract the mean bootstrap value for each one. Also,  create a boxplot to compare the bostrap mean value between different parameters.
-    * `hetero_s5_consens.r`.- works to analyze the results of the hetero_s5_consens file in the process of standardized of ipyrad and creates the boxplot.
-    * `trees_raxml_mamm.r`.- import the trees obtained in raxml and mrbayes to modify them.
-    * `compares_trees.r`.- compare the topology of two different trees
+    * `heterozygosity_stats.r`.- works to analyze the results of the heterozygosity in the process of standardized of ipyrad and creates the boxplot.
+    * `trees_raxml.r`.- import the trees obtained in raxml to modify them.
+    * `genetic_distance.r`.- it generates the distance genetic from the plink raw file and it creates the boxplot.
+    * `missing_data_ipyrad_stats.r`.- import the .loci files and extracts the number and percentage of missing data. 
 
 
   * bash script `.sh`
@@ -64,6 +65,8 @@ Contains:
     * `plink.sh`.- Generate .bed, .bim, .fam and .raw files
 
 *note.- the folder `unused` contains the scripts that I use to practice and probe the final scripts*
+    * * `ipyrad_read_loci.R`.- parse the .loci file into fasta file, and creates a table with the sequence length.
+    * `compares_trees.r`.- compare the topology of two different trees
 
 ###### data
 

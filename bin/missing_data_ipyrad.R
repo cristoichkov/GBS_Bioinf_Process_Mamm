@@ -1,4 +1,4 @@
-## This function parse the .loci file into fasta file, and creates a table with the sequence length ##
+    ## This function parse the .loci file and return a data frame with missing data for each loci ##
 
 ## necessary packages
 library(tidyverse)
