@@ -64,9 +64,10 @@ Contains:
     * `vcftools.sh`.- Convert vcf files to plink files (.map and .ped).
     * `plink.sh`.- Generate .bed, .bim, .fam and .raw files
 
-note.- the folder `unused` contains the scripts that I use to practice and probe the final scripts
+* note.- the folder `unused` contains the scripts that I use to practice and probe the final scripts
 
     * `ipyrad_read_loci.R`.- parse the .loci file into fasta file, and creates a table with the sequence length.
+
     * `compares_trees.r`.- compare the topology of two different trees
 
 ###### data
