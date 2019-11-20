@@ -133,3 +133,61 @@ Figure 11.- Scheme showing the effects of using a low minimum coverage (= 2) and
 <p align="center">
 Figure 12.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
 </p>
+
+#### DISCUSSION
+Studied has been carried out demonstrating the importance of optimizing the parameters using special programs to analyze reduced genome representation data such as Stacks (Mastretta-Yanes et al., 2015; Paris et al., 2017) and ipyrad (Tripp et al ., 2017; McCartney-Melstad et al., 2019). In particular, ipyrad has been used mainly to solve phylogenetic relationships in taxonomic complexes (Massatti et al., 2016; Tripp et al., 2017; Fabritzek and Kadereit, 2018; Wagner et al., 2018), since it allows the presence of insertions and deletions (indels) making it possible to compare phylogenetically distant species (Pante et al., 2015). The parameter with the greatest relevance within ipyrad is the grouping threshold, which will allow for a sequence similarity threshold to identify putative orthologous loci. Choosing high similarity thresholds can result in dividing putative orthologous loci and thus eliminate potentially informative variation (Valencia et al., 2018). While lower similarity thresholds may allow paralogous sequences to be merged incorrectly in an orthologous location (Nadukkalam Ravindran et al., 2018). Another parameter of importance is the minimum coverage, the laxer the threshold, the more likely that PCR or sequencing errors are taken as allelic variation, while if we choose a high value we can generate allelic drop and locus drop (Mastretta-Yanes et al., 2015).
+Evaluating different metrics allowed us to optimize the two parameters analyzed in ipyrad, differences between metrics were presented making it a bit difficult to choose the optimal assembly (McCartney-Melstad et al., 2019). For the clustering threshold there is more variation between the metrics: the recovery of the number of SNPs and loci, indicating that the optimal ones are between 0.86 and 0.88; heterozygosis, between 0.89 and 0.91; genetic distance, 0.91 in most putative populations; the lost data, between 0.88 and 0.91. While the mindepth was more constant among the metrics, the value is 10 where the majority reached for each of these. Therefore, the optimal clustering threshold was set at 0.91 mainly because it is more constant between the metrics and the mindepth at 10.
+Given the nature of reduced representation genome sequencing, including phylogenetically distant taxa increases the possibility that enzyme's cut sites are mutated, which can cause a considerable number of lost data (Huang and Knowles, 2016). Another source that generates lost data is the mindepth, high values ​​can generate a locus drop that is reflected in a greater number of  (Mastretta-Yanes et al., 2015). For these reasons, it is inevitable not to have results with a large amount of missing data, and generally when we are left with matrices without or with a small percentage of lost data, we can assume that these are very conserved sites that do not present the variation necessary to generate phylogenetic resolutions (Tripp et al., 2017). Several studies have evaluated, through real and simulated data, how missing data can affect phylogenetic analyzes. The results have shown that most of the results the topologies are consistent and the supports of the nodes are high (Wiens and Morrill, 2011). With RADseq data, Tripp et al. (2017) showed that with a percentage of 90% of missing data, relations in *Petalidium* were resolved. Our data shows the same pattern for missing data, allows greater phylogenetic resolution and increases the supports of the nodes. Another important point is that the topology is maintained by decreasing lost data, however, the tree without missing data was not resolved and its nodes lack supports, which shows that they are highly conserved regions.
+
+#### CONCLUSION
+The importance of performing optimization of parameters in *ipyrad* (clustering threshold and minimum depth) was shown, which demonstrates that lax values in both parameters can lead to the inclusion of PCR or sequencing errors and the addition of paralogical loci in orthologous loci. While very high values can cause allele drop and locus drop, as well as the division of potentially orthologous genes. It is also shown that generating phylogenetic trees with a high percentage of missing data is greater phylogenetic resolution and the supports of the nodes are increased.
+
+#### REFERENCES
+* Arias, S., Guzmán-López, L., Guzmán-Cruz, U., & Vázquez-Benítez, B. (2012). Cactaceae. En Flora del Valle de Tehuacán-Cuicatlán 95 (p. 235). México D. F.: Universidad Nacional Autónoma de México.
+
+* Catchen, J. M., Amores, A., Hohenlohe, P., Cresko, W., & Postlethwait, J. H. (2011). Stacks: Building and Genotyping Loci De Novo From Short-Read Sequences. G3: Genes, Genomes, Genetics, 1(3), 171-182. https://doi.org/10.1534/g3.111.000240
+
+* Christian, D. A., Palomino, G., García, A., & Méndez, I. (2006). Nuclear genome size and karyotype analysis in Mammillaria species (Cactaceae). Caryologia, 59(2), 177-186. https://doi.org/10.1080/00087114.2006.10797914
+
+* Eaton, D. A. R. (2014). PyRAD: assembly of de novo RADseq loci for phylogenetic analyses. Bioinformatics, 30(13), 1844-1849. https://doi.org/10.1093/bioinformatics/btu121
+
+* Eaton, D. A. R. (2019). ipyrad. Recuperado 21 de mayo de 2019, de https://ipyrad.readthedocs.io/files.html
+
+* Eaton, D. A. R., & Ree, R. H. (2013). Inferring Phylogeny and Introgression using RADseq Data: An Example from Flowering Plants (Pedicularis: Orobanchaceae). Systematic Biology, 62(5), 689-706. https://doi.org/10.1093/sysbio/syt032
+
+* Edgar, R. C. (2004). MUSCLE: multiple sequence alignment with high accuracy and high throughput. Nucleic Acids Research, 32(5), 1792-1797.
+
+* Edgar, Robert C. (2010). Search and clustering orders of magnitude faster than BLAST. Bioinformatics (Oxford, England), 26(19), 2460-2461. https://doi.org/10.1093/bioinformatics/btq461
+
+* Fabritzek, A. G., & Kadereit, J. W. (2018). Identity and relationships of Sempervivum tectorum (Crassulaceae) in the Rhine Gorge area. Willdenowia, 48(3), 405-414. https://doi.org/10.3372/wi.48.48310
+
+* Goetze, M., Zanella, C. M., Palma‐Silva, C., Büttow, M. V., & Bered, F. (2017). Incomplete lineage sorting and hybridization in the evolutionary history of closely related, endemic yellow-flowered Aechmea species of subgenus Ortgiesia (Bromeliaceae). American Journal of Botany, 104(7), 1073-1087. https://doi.org/10.3732/ajb.1700103
+
+* Guzmán, U., Arias, S., & Dávila, P. (2003). Catálogo de cactáceas mexicanas. México, D.F.: Universidad Nacional Autónoma de México/Comisión Nacional para el Conocimiento y Uso de la Biodiversidad.
+
+* Huang, H., & Knowles, L. L. (2016). Unforeseen Consequences of Excluding Missing Data from Next-Generation Sequences: Simulation Study of RAD Sequences. Systematic Biology, 65(3), 357-365. https://doi.org/10.1093/sysbio/syu046
+
+* Hunt, D. R. (2006). The new cactus lexicon. The Manse Chapel Lane Milbourne Port: DH Books.
+Li, Q.-Q., Zhou, S.-D., Huang, D.-Q., He, X.-J., & Wei, X.-Q. (2016). Molecular phylogeny, divergence time estimates and historical biogeography within one of the world’s largest monocot genera. AoB PLANTS, 8. https://doi.org/10.1093/aobpla/plw041
+
+* Massatti, R., Reznicek, A. A., & Knowles, L. L. (2016). Utilizing RADseq data for phylogenetic analysis of challenging taxonomic groups: A case study in Carex sect. Racemosae. American Journal of Botany, 103(2), 1-11.
+
+* Mastretta‐Yanes, A., Arrigo, N., Alvarez, N., Jorgensen, T. H., Piñero, D., & Emerson, B. C. (2015). Restriction site-associated DNA sequencing, genotyping error estimation and de novo assembly optimization for population genetic inference. Molecular Ecology Resources, 15(1), 28-41. https://doi.org/10.1111/1755-0998.12291
+
+* McCartney‐Melstad, E., Gidiş, M., & Shaffer, H. B. (2019). An empirical pipeline for choosing the optimal clustering threshold in RADseq studies. Molecular Ecology Resources, 19(5), 1195-1204. https://doi.org/10.1111/1755-0998.13029
+
+* Nadukkalam Ravindran, P., Bentzen, P., Bradbury, I. R., & Beiko, R. G. (2018). PMERGE: Computational filtering of paralogous sequences from RAD‐seq data. Ecology and Evolution, 8(14), 7002-7013. https://doi.org/10.1002/ece3.4219
+
+* Pante, E., Abdelkrim, J., Viricel, A., Gey, D., France, S. C., Boisselier, M. C., & Samadi, S. (2015). Use of RAD sequencing for delimiting species. Heredity, 114(5), 450-459. https://doi.org/10.1038/hdy.2014.105
+
+* Paris, J. R., Stevens, J. R., & Catchen, J. M. (2017). Lost in parameter space: a road map for stacks. Methods in Ecology and Evolution, 8(10), 1360-1373. https://doi.org/10.1111/2041-210X.12775
+
+* Pilbeam, J. (1999). Mammillaria. Cirio Publishing Services Ltd in Southampton.
+
+* Reppenhagen, W. (1992). Die Gattung Mammillaria. Monographie.
+
+* Tripp, E. A., Tsai, Y.-H. E., Zhuang, Y., & Dexter, K. G. (2017). RADseq dataset with 90% missing data fully resolves recent radiation of Petalidium (Acanthaceae) in the ultra-arid deserts of Namibia. Ecology and Evolution, 7(19), 7920-7936. https://doi.org/10.1002/ece3.327
+
+* Valencia, L. M., Martins, A., Ortiz, E. M., & Fiore, A. D. (2018). A RAD-sequencing approach to genome-wide marker discovery, genotyping, and phylogenetic inference in a diverse radiation of primates. PLOS ONE, 13(8), e0201254. https://doi.org/10.1371/journal.pone.0201254
+
+* Wagner, N. D., Gramlich, S., & Hörandl, E. (2018). RAD sequencing resolved phylogenetic relationships in European shrub willows (Salix L. subg. Chamaetia and subg. Vetrix) and revealed multiple evolution of dwarf shrubs. Ecology and Evolution, 8(16), 8243-8255. https://doi.org/10.1002/ece3.4360
