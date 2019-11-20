@@ -52,3 +52,84 @@ Figure 2.- Scheme showing the effects of using a low minimum coverage (= 2) and 
 <p align="center">
 Figure 3.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
 </p>
+
+##### Total number of loci and SNPs recovered using different parameters
+
+During the clustering of step 3, *ipyrad* will allow us to filter the paralogous loci, if we choose a high value it can divide the divergent alleles into separate loci, while the low thresholds can cause the paralogous sequences to merge incorrectly in an orthologous place. The total of polymorphic sites and loci recovered in increments in 0.82, in the case of a minimum of 40% samples the increase is indefinite. While in a minimum of 60% and 80% samples the increase is up to 0.88 and 0.86 respectively, then there is a slow decrease to 0.94 (Figure 4A,B; [Table 4](https://github.com/cristoichkov/GBS_Bioinf_Process_Mamm/blob/master/out/ipyrad_outfiles/stats/stats_params_all.csv)). In the case of the mindepth, the pattern was almost inverse. The total of polymorphic sites and loci recovered decreases from 3, for a minimum of 40% and 60% samples an intense decrease is observed until approximately 9 where it seems to stabilize, this may indicate that there are many unique reads which can be caused for PCR or sequencing errors. While in a minimum of 80% samples it seems to be stable in all the thresholds analyzed (Figure 4C,D;  [Table 4](https://github.com/cristoichkov/GBS_Bioinf_Process_Mamm/blob/master/out/ipyrad_outfiles/stats/stats_params_all.csv)).
+
+
+<p align="center">
+<img src="out/R_plots/Num_loci_snps.png" width="900">
+</p>
+<p align="center">
+Figure 4.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+</p>
+
+##### Level of heterozygosis affected by different parameters
+The level of heterozygosis in the clustering threshold increases from 0.82 to 0.89, where a higher percentage of heterozygosis is observed, this pattern is maintained until 0.91 and subsequently decreases steeply at 0.94 (Figure 5A). For mindepth, the level of heterozygosis was increased slightly to 10 where it seems to stabilize (Figure 5B). Choosing the values with the highest level of heterozygosis assures us that we are not generating allele drop, which would artificially inflate the homozygosis.
+
+<p align="center">
+<img src="out/R_plots/Heterozygous.png" width="950">
+</p>
+<p align="center">
+Figure 5.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+</p>
+
+##### Effect of parameters on genetic distance
+The genetic distances of 10 putative populations (samples from the same location and close to it) were compared to find the parameters that generate the least distance between individuals. The results for the clustering threshold show that the value of 0.91 is the one that generally produces the shortest distances, while more lax values generate the greatest distances (Figure 6). In the mindepth, the pattern is that at a value of 3 the distance is greater and decreases as the depth value increases. The depths where the smallest genetic distances are generated is 10 and remains more or less constant up to 12 (Figure 7).
+
+
+<p align="center">
+<img src="out/R_plots/Genetic_dist_clust.png" width="900">
+</p>
+<p align="center">
+Figure 6.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+</p>
+
+<p align="center">
+<img src="out/R_plots/Genetic_dist_mindepth.png" width="900">
+</p>
+<p align="center">
+Figure 7.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+</p>
+
+##### Relationship between lost data and different parameters
+Reduced representation genome sequencing uses restriction enzymes to generate random cuts on a genome. The more phylogenetically further away is the problem taxa, possibly they will present mutations in the enzyme's cutting regions, which causes missing data in the analyzes. Another source that generates missing data is through the locus loss due to the mindepth, it is expected that at a lower depth more missing data will be generated and decrease as the depth is increased. For the clustering threshold, for both 40% and 60% minimum samples, the pattern is to increase the missing data as this parameter is increased. While for a minimum of 80% samples the pattern seems similar, however, it decreases to 0.91 and increases again to 0.94 (Figure 8). The minimum depth has an inverse pattern while increasing this parameter the levels of lost data decrease. In minimum samples of 40% and 60%, the values ​​seem to stabilize from 10, while at 80% the values ​​are more stable (Figure 9).
+
+<p align="center">
+<img src="out/R_plots/clust_missing_data.png" width="800">
+</p>
+<p align="center">
+Figure 8.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+</p>
+
+<p align="center">
+<img src="out/R_plots/mindepth_missing_data.png" width="800">
+</p>
+<p align="center">
+Figure 9.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+</p>
+
+##### Impact of lost data on topology and phylogenetic resolution
+There has been much discussion about the impact of missing data on topology and phylogenetic resolution, studies have shown that for both parsimony and probabilistic methods a high percentage of missing data may not have significant effects on the topology, and on the contrary, they may increase the resolution of the nodes. For this analysis, a near-optimal assembly was used (clust_threshold = 0.89, mindepth = 9) and maximum likelihood analysis was generated using matrices with 80%, 60%, 40%, 20% and 0% of missing data. The analyzes showed that when increasing the missing data the resolution (Figure 10) and the support of the nodes was greater (Figure 11). Since bootstrap supports tend to increase as the data increases, it is necessary to make a comparison in the topology to make sure that the inclusion of more data by allowing more missing data does not affect it. Therefore, a comparison was made in the topology between the tree with 80% data and the rest (Figure 12).
+
+<p align="center">
+<img src="out/R_plots/Phylogenetic_resolution.png" width="900">
+</p>
+<p align="center">
+Figure 10.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+</p>
+
+<p align="center">
+<img src="out/R_plots/Clust_Tresh_bootstrap.png" width="700">
+</p>
+<p align="center">
+Figure 11.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+</p>
+
+<p align="center">
+<img src="out/R_plots/Compare_trees.png">
+</p>
+<p align="center">
+Figure 12.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+</p>

@@ -3,14 +3,9 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 
-## Working direcory
-setwd("~/GBS_Bioinf_Process_Mamm/bin")
-
-## Start with a fresh brain
-rm(list = ls())
 
 ## Call the function ipyrad_extract_table
-source("unused/mean_bootstrap_raxml.R")
+source("mean_bootstrap_raxml.R")
 
 ## List the directories 
 folders <- list.files("../out/raxml/")
@@ -52,12 +47,16 @@ pl_boost <- mean_boot %>%
   ggplot(aes(x=value, y=mean_boot, fill=factor(min_sam))) +
   geom_boxplot() + 
   labs(y = "Mean bootstrap values (10 RAxML runs)", x = "Clustering Threshold (% similarity)") +
-  scale_fill_discrete(name = " Minimum \n number \n of samples", labels = c("40%", "60%", "80%"))
+  scale_fill_discrete(name = " Minimum \n number \n of samples", labels = c("40%", "60%", "80%")) +
+  theme(axis.text.x = element_text(face="bold", size=12, colour = "gray16"), 
+        axis.text.y = element_text(face="bold", size=12, colour = "gray16")) +
+  theme(axis.title.y = element_text(face="bold", size = rel(1.2), angle = 90, colour = "grey32")) +
+  theme(axis.title.x = element_text(face="bold", size = rel(1.2), angle = 00, colour = "grey32"))
 
 pl_boost
 
 ## Save plot in EPS Extension
 ggsave(pl_boost, file="../out/R_plots/Clust_Tresh_bootstrap.png", device="png", dpi = 300, width = 10, height = 7)
-  
+    
 
 
