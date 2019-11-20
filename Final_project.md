@@ -33,5 +33,22 @@ The *ipyrad* v.0.7.30 workflow consists of 7 steps, the first corresponds to the
 | <em>mindepth</em>          |4 and 5|     6       |              3 to 12          |
 |  <em>clust_threshold</em>  |3 and 6|    0.90     |0.82, 0.85 to 0.89, 0.91, 0.94 |
 
-Tabla 2. <em> ipyrad</em> parameters that were tested in different combinations.
+Table 2. <em> ipyrad</em> parameters that were tested in different combinations.
 </center>
+
+#### RESULTS
+The results show that *GBSX* recovered the highest number of reads (97.2%), followed by *Stacks* (95.41%), while ipyrad recovered the lowest number (94.74%) (Figure 2). The readings were assigned to each sample according to their barcode, the number of reads per sample ranged from 684,453 to 6,118,488 (mean = 2,798,302, sd = 1,108,075) (Figure 3; [Table 3](https://github.com/cristoichkov/GBS_Bioinf_Process_Mamm/blob/master/out/demultiplex_stats/stats_summary_demultiplex_filter.csv)). A filter was applied to remove samples with less than 800,000 readings and only one sample corresponding to M. crucigera was removed. After filtering during step two of ipyrad, the percentage of readings that passed the filters was 76% to 90.63% (mean = 84.81%, sd = 2.73%).
+
+<p align="center">
+<img src="out/R_plots/Correctly_demultiplexed.png" width="600">
+</p>
+<p align="center">
+Figure 2.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+</p>
+
+<p align="center">
+<img src="out/R_plots/Reads_per_sample.png" width="900">
+</p>
+<p align="center">
+Figure 3.- Scheme showing the effects of using a low minimum coverage (= 2) and a high coverage (= 6), taken from Mastretta-Yanes et al. (2015)
+</p>
