@@ -31,7 +31,7 @@ The *ipyrad* v.0.7.30 workflow consists of 7 steps, the first corresponds to the
 | Parameter                  |Step   |default value|          Values to test       |
 |----------------------------|:-----:|:-----------:|:-----------------------------:|
 | <em>mindepth</em>          |4 and 5|     6       |              3 to 12          |
-|  <em>clust_threshold</em>  |3 and 6|    0.90     |0.82, 0.85 to 0.89, 0.91, 0.94 |
+|  <em>clust_threshold</em>  |3 and 6|    0.85     |0.82, 0.85 to 0.89, 0.91, 0.94 |
 
 Table 2. <em> ipyrad</em> parameters that were tested in different combinations.
 </center>
