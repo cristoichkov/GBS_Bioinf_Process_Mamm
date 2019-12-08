@@ -155,6 +155,8 @@ p1 <- ggtree(tree_1, aes(color=group))
 
 d1 <- p1$data
 
+
+
 comp_tree_list <- list()
 
 for (i in c("40", "60", "80", "100")){
